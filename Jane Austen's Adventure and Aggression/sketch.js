@@ -36,8 +36,8 @@ function draw() {
     cleanUpStep();
     touchingSide();
     moveX();
-    fill(playerCharacters[playerOne.class].sprite);
-    ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.class].width, playerCharacters[playerOne.class].height)
+    fill(playerCharacters[playerOne.job].sprite);
+    ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
   }
  //Main Menu
  else if (gameMode === 0){
@@ -48,11 +48,15 @@ function draw() {
 }
 
 
-function mouseClicked(){
+function mousePressed(){
   if (gameMode === 0){
-    mainMenuClick();
+    if (mouseButton === LEFT){
+      mainMenuClick();
+    }
   }
   if (gameMode === 1){
-    
+    if (mouseButton === LEFT){
+      playerCharacters[playerOne.job].attackOne();
+    }
   }
 }

@@ -2,7 +2,7 @@
 function jump(){
     if (playerOne.canJump){
         
-        playerOne.ySpeed -= (playerCharacters[playerOne.class].jumpHeight);
+        playerOne.ySpeed -= (playerCharacters[playerOne.job].jumpHeight);
         playerOne.canJump = false;//needs to touch ground to reset this variable
     }
 }
@@ -10,10 +10,10 @@ function jump(){
 //Change the player's speed either right or left
 function moveX(){
     if (isMovingRight) {
-    playerOne.xSpeed = (playerCharacters[playerOne.class].moveSpeed);
+    playerOne.xSpeed = (playerCharacters[playerOne.job].moveSpeed);
     }
     if (isMovingLeft) {
-    playerOne.xSpeed = (-playerCharacters[playerOne.class].moveSpeed);
+    playerOne.xSpeed = (-playerCharacters[playerOne.job].moveSpeed);
     }
 }
 
@@ -50,17 +50,17 @@ function moveStep(){
     
     //Stops the player from going offstage to the left
 function touchingSide(){
-    if (playerOne.xPosition <= playerCharacters[playerOne.class].width/2){
+    if (playerOne.xPosition <= playerCharacters[playerOne.job].width/2){
         playerOne.xSpeed = 0;
-        playerOne.xPosition = playerCharacters[playerOne.class].width/2;
+        playerOne.xPosition = playerCharacters[playerOne.job].width/2;
     }
-    if (playerOne.xPosition >= width - playerCharacters[playerOne.class].width/2){
+    if (playerOne.xPosition >= width - playerCharacters[playerOne.job].width/2){
         playerOne.xSpeed = 0;
-        playerOne.xPosition = width - playerCharacters[playerOne.class].width/2;
+        playerOne.xPosition = width - playerCharacters[playerOne.job].width/2;
     }
-    if (playerOne.yPosition >= height - (rects[floor(playerOne.xPosition)].height - playerCharacters[playerOne.class].height/4)-(7)){
+    if (playerOne.yPosition >= height - (rects[floor(playerOne.xPosition)].height - playerCharacters[playerOne.job].height/4)-(7)){
         playerOne.ySpeed = 0;
-        playerOne.yPosition = height - (rects[floor(playerOne.xPosition)].height - playerCharacters[playerOne.class].height/4) - (1);
+        playerOne.yPosition = height - (rects[floor(playerOne.xPosition)].height - playerCharacters[playerOne.job].height/4) - (1);
         playerOne.canJump = true;
     }
 }

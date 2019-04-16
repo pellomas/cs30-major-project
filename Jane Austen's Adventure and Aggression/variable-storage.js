@@ -3,53 +3,88 @@ let isMovingRight;
 let isMovingLeft;
 
 function initializeVariables(){
+    class Rogue{
+        constructor(){
+            this.jumpHeight = 20;
+            this.maxHealth = 30;
+            this.height = 60;
+            this.width = 45;
+            this.moveSpeed = 10;
+            this.sprite = 'purple';
+        }
+
+        attackOne(){
+            console.log('attack One');
+        }
+    }
     
-    rogue = {       
-        jumpHeight: 20,
-        maxHealth: 30,
-        height: 60,
-        width: 45,
-        moveSpeed: 10,
-        sprite: 'purple',
-    };
-    paladin = {
-        jumpHeight: 10,
-        maxHealth: 30,
-        height: 65,
-        width: 52,
-        moveSpeed: 5,
-        sprite: 'red',
-    };
-    mage = {
-        jumpHeight: 15,
-        maxHealth: 30,
-        height: 70,
-        width: 45,
-        moveSpeed: 8,
-        sprite: 'cyan',
-    };
-    cleric = {
-        jumpHeight: 12,
-        maxHealth: 30,
-        height: 67,
-        width: 50,
-        moveSpeed: 6,
-        sprite: 'yellow',
-    };
+    class Paladin{
+        constructor(){
+            this.jumpHeight = 10;
+            this.maxHealth = 30;
+            this.height = 65;
+            this.width = 52;
+            this.moveSpeed = 5;
+            this.sprite = 'red';  
+        }
+        
+        attackOne(){
+            console.log('attack One');
+        }
+    }
+
+    class Mage{
+        constructor(){
+            this.jumpHeight = 14;
+            this.maxHealth = 30;
+            this.height = 65;
+            this.width = 52;
+            this.moveSpeed = 7;
+            this.sprite = 'cyan';  
+        }
+        
+        attackOne(){
+            console.log('attack One');
+        }
+    }
+
+    class Cleric{
+        constructor(){
+            this.jumpHeight = 12;
+            this.maxHealth = 30;
+            this.height = 65;
+            this.width = 52;
+            this.moveSpeed = 6;
+            this.sprite = 'yellow';  
+        }
+        
+        attackOne(){
+            console.log('attack One');
+        }
+    }
+
+    rogue = new Rogue();
+    paladin = new Paladin();
+    mage = new Mage();
+    cleric = new Cleric();
 
     playerCharacters = [rogue, paladin, mage, cleric, rogue, rogue, paladin, mage, cleric];
 
-    playerOne = {
-        class: 0,
-        xPosition: width/2,
-        yPosition: height/2,
-        xSpeed: 0,
-        ySpeed: 0,
-        currentHealth: 30,
-        isCasting: false,
-        isStunned: false,
-        canJump: false,
+    class Player{
+        constructor(){
+            this.job = 0;
+            this.xPosition = width/2;
+            this.yPosition = height/2;
+            this.xSpeed = 0;
+            this.ySpeed = 0;
+            this.currentHealth = 30;
+            this.isCasting = false;
+            this.isStunned = false;
+            this.canJump = false;
+        }
     }
+
+    playerOne = new Player();
 }
 
 let menuCellSize;
