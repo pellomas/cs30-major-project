@@ -1,4 +1,4 @@
-//Let Megaman jump
+//Let the player jump
 function jump(){
     if (playerOne.canJump){
         
@@ -18,14 +18,24 @@ function moveX(){
 }
 
 function keyPressed() {
-    if (key === 'a' || key === 'A') {
-        isMovingLeft = true;
+    if (gameMode === 1){
+        if (key === 'a' || key === 'A') {
+            isMovingLeft = true;
+        }
+        if (key === 'd' || key === 'D') {
+            isMovingRight = true;
+        }
+        if (key === ' '){
+          jump();
+        }  
     }
-    if (key === 'd' || key === 'D') {
-        isMovingRight = true;
-    }
-    if (key === ' '){
-        jump();
+    if (key === 'e' || key === 'E'){
+        if (gameMode === 1){
+            gameMode = 2;  
+        }
+        else if (gameMode === 2){
+            gameMode = 1;
+        }
     }
 }
 function keyReleased() {
@@ -38,11 +48,12 @@ function keyReleased() {
 }
 
 function moveStep(){
-    playerOne.xPosition += playerOne.xSpeed;
-    playerOne.yPosition += playerOne.ySpeed;
+    if (gameMode === 1){
+       playerOne.xPosition += playerOne.xSpeed; 
+    }
+    playerOne.yPosition += playerOne.ySpeed; 
 
-    playerOne.xPosition -= 2;
-     
+    playerOne.xPosition -= 2;   
 }
     
     

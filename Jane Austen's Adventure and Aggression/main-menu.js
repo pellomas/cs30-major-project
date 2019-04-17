@@ -18,7 +18,7 @@ function setUpMainMenu(){
 function displayGrid(grid, cellSize, gridX, gridY) {
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid.length; x++) {
-      if (menuGrid[y][x] === 0) {
+      if (grid[y][x] === 0) {
         fill(255);
       }
       else {

@@ -16,6 +16,9 @@ function initializeVariables(){
         attackOne(){
             console.log('attack One');
         }
+        attackTwo(){
+            console.log('attack Two');
+        }
     }
     
     class Paladin{
@@ -30,6 +33,9 @@ function initializeVariables(){
         
         attackOne(){
             console.log('attack One');
+        }
+        attackTwo(){
+            console.log('attack Two');
         }
     }
 
@@ -46,6 +52,9 @@ function initializeVariables(){
         attackOne(){
             console.log('attack One');
         }
+        attackTwo(){
+            console.log('attack Two');
+        }
     }
 
     class Cleric{
@@ -60,6 +69,9 @@ function initializeVariables(){
         
         attackOne(){
             console.log('attack One');
+        }
+        attackTwo(){
+            console.log('attack Two');
         }
     }
 
@@ -98,4 +110,10 @@ function initializeWindowVariables(){
         menuCellSize = width / 3
     }
     menuPosition = ((width - 3*menuCellSize) / 2);
+}
+
+let inventoryGrid = [];
+
+function initializeInventoryVariables(){
+    inventoryGrid = create2DArray(10, 10);
 }

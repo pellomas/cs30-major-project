@@ -19,6 +19,7 @@ function setup() {
   ellipseMode(CENTER);
   initializeVariables();
   initializeWindowVariables();
+  initializeInventoryVariables();
   time = 0;
   numberOfRects = width;
   rectWidth = width / numberOfRects;
@@ -27,8 +28,14 @@ function setup() {
 }
 
 function draw() {
+  //Main Menu
+  if (gameMode === 0){
+    background(0);
+    setUpMainMenu();
+    displayGrid(menuGrid, menuCellSize, menuPosition, 0);
+  }
   //Game
-  if (gameMode === 1){
+  else if (gameMode === 1){
     background(66, 206, 244);
     moveTerrain();
     moveTerrain();
@@ -39,12 +46,10 @@ function draw() {
     fill(playerCharacters[playerOne.job].sprite);
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
   }
- //Main Menu
- else if (gameMode === 0){
-    background(0);
-    setUpMainMenu();
-    displayGrid(menuGrid, menuCellSize, menuPosition, 0);
+  else if (gameMode === 2){
+    displayGrid(inventoryGrid, 5, 5);
   }
+ 
 }
 
 
@@ -57,6 +62,9 @@ function mousePressed(){
   if (gameMode === 1){
     if (mouseButton === LEFT){
       playerCharacters[playerOne.job].attackOne();
+    }
+    if (mouseButton === RIGHT){
+      playerCharacters[playerOne.job].attackTwo();
     }
   }
 }
