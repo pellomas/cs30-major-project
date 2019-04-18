@@ -113,7 +113,14 @@ function initializeWindowVariables(){
 }
 
 let inventoryGrid = [];
+let inventory;
 
 function initializeInventoryVariables(){
-    inventoryGrid = create2DArray(10, 10);
+    inventory = {
+        xPosition: 5,
+        yPosition: 5,
+        cellSize: 40,
+        cellNumber: 10,
+    };
+    inventoryGrid = create2DArray(inventory.cellNumber, inventory.cellNumber);
 }

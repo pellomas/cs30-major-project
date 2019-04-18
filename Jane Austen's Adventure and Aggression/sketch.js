@@ -68,4 +68,17 @@ function mousePressed(){
       playerCharacters[playerOne.job].attackTwo();
     }
   }
+  if (gameMode === 2){
+     if (mouseX > inventory.xPosition, mouseY > inventory.yPosition, mouseX < inventory.xPosition + inventory.cellNumber*inventory.cellSize){
+        let xcoord = floor(mouseX / inventory.cellSize);
+        let ycoord = floor(mouseY / inventory.cellSize);
+
+        if (inventoryGrid[ycoord][xcoord] === 1) {
+          inventoryGrid[ycoord][xcoord] = 0;
+        }
+        else {
+          inventoryGrid[ycoord][xcoord] = 1;
+        }
+     }
+  }
 }
