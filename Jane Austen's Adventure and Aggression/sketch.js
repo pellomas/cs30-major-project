@@ -69,7 +69,7 @@ function mousePressed(){
     }
   }
   if (gameMode === 2){
-     if (mouseX > inventory.xPosition, mouseY > inventory.yPosition, mouseX < inventory.xPosition + inventory.cellNumber*inventory.cellSize){
+     if (mouseX > inventory.xPosition, mouseY > inventory.yPosition, mouseY < inventory.yPosition + inventory.cellNumber*inventory.cellSize, mouseX < inventory.xPosition + inventory.cellNumber*inventory.cellSize){
         let xcoord = floor(mouseX / inventory.cellSize);
         let ycoord = floor(mouseY / inventory.cellSize);
 
