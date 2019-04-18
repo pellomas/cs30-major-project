@@ -13,7 +13,7 @@ let rects = [];
 function moveTerrain(){
     rects.shift();
 
-    let rectHeight = (noise(time) * height/3) + 1;
+    let rectHeight = (noise(time) * height/4) + height/8;
     let myRectangle = {
         height: rectHeight,
         width: width/numberOfRects,
@@ -24,7 +24,7 @@ function moveTerrain(){
 
     time += 0.001;
 
-    noStroke();
+    
     fill(14, 112, random(10, 40));
     for(i =0; i < numberOfRects; i++){
         rects[i].x -= rectWidth;
@@ -34,7 +34,7 @@ function moveTerrain(){
 
 function generateInitialTerrain(){
   for (let i = 0; i < numberOfRects; i++){
-    let rectHeight = (noise(time) * height/3) + 1;
+    let rectHeight = (noise(time) * height/4) + height/8;
     let myRectangle = {
       height: rectHeight,
       width: width/numberOfRects,

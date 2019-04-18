@@ -24,7 +24,9 @@ function displayGrid(grid, cellSize, gridX, gridY) {
       else {
         fill(0);
       }
+      stroke(20);
       rect(x*cellSize + gridX, y*cellSize + gridY, cellSize, cellSize);
+      noStroke();
     }
   }
 }

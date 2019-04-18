@@ -14,6 +14,7 @@ let playerOne;
 
 
 function setup() {
+  noStroke();
   createCanvas(windowWidth, windowHeight);
   document.addEventListener("contextmenu", event => event.preventDefault());
   ellipseMode(CENTER);
@@ -47,7 +48,7 @@ function draw() {
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
   }
   else if (gameMode === 2){
-    displayGrid(inventoryGrid, 5, 5);
+    displayGrid(inventoryGrid, 40, 5, 5);
   }
  
 }
