@@ -15,15 +15,12 @@ function setUpMainMenu(){
     menuGrid = create2DArray(3, 3);
 }
 
-function displayGrid(grid, cellSize, gridX, gridY) {
+function displayGrid(grid, gridAssets, cellSize, gridX, gridY) {
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid.length; x++) {
-      if (grid[y][x] === 0) {
-        fill(255);
-      }
-      else {
-        fill(0);
-      }
+      
+      fill(gridAssets[grid[y][x]]);
+
       stroke(20);
       rect(x*cellSize + gridX, y*cellSize + gridY, cellSize, cellSize);
       noStroke();

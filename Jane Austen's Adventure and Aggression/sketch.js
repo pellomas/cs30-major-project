@@ -33,7 +33,7 @@ function draw() {
   if (gameMode === 0){
     background(0);
     setUpMainMenu();
-    displayGrid(menuGrid, menuCellSize, menuPosition, 0);
+    displayGrid(menuGrid, menuGridAssets, menuCellSize, menuPosition, 0);
   }
   //Game
   else if (gameMode === 1){
@@ -48,7 +48,7 @@ function draw() {
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
   }
   else if (gameMode === 2){
-    displayGrid(inventoryGrid, 40, 5, 5);
+    displayGrid(inventoryGrid, menuGridAssets, inventory.cellSize, inventory.xPosition, inventory.yPosition);
   }
  
 }
@@ -69,16 +69,6 @@ function mousePressed(){
     }
   }
   if (gameMode === 2){
-     if (mouseX > inventory.xPosition, mouseY > inventory.yPosition, mouseY < inventory.yPosition + inventory.cellNumber*inventory.cellSize, mouseX < inventory.xPosition + inventory.cellNumber*inventory.cellSize){
-        let xcoord = floor(mouseX / inventory.cellSize);
-        let ycoord = floor(mouseY / inventory.cellSize);
-
-        if (inventoryGrid[ycoord][xcoord] === 1) {
-          inventoryGrid[ycoord][xcoord] = 0;
-        }
-        else {
-          inventoryGrid[ycoord][xcoord] = 1;
-        }
-     }
+     inventoryClick();
   }
 }

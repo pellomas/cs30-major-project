@@ -101,6 +101,7 @@ function initializeVariables(){
 
 let menuCellSize;
 let menuPosition;
+let menuGridAssets;
 
 function initializeWindowVariables(){
     if (width > height) {
@@ -110,6 +111,8 @@ function initializeWindowVariables(){
         menuCellSize = width / 3
     }
     menuPosition = ((width - 3*menuCellSize) / 2);
+
+    menuGridAssets = ['purple', 'red', 'cyan', 'yellow', 'green', 'brown'];
 }
 
 let inventoryGrid = [];
@@ -119,8 +122,8 @@ function initializeInventoryVariables(){
     inventory = {
         xPosition: 5,
         yPosition: 5,
-        cellSize: 40,
-        cellNumber: 10,
+        cellSize: 80,
+        cellNumber: 4,
     };
     inventoryGrid = create2DArray(inventory.cellNumber, inventory.cellNumber);
 }
