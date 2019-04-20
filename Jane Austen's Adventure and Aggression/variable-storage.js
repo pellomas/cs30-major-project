@@ -14,10 +14,10 @@ function initializeVariables(){
         }
 
         attackOne(){
-            console.log('attack One');
+            //console.log('attack One');
         }
         attackTwo(){
-            console.log('attack Two');
+            //console.log('attack Two');
         }
     }
     
@@ -32,10 +32,10 @@ function initializeVariables(){
         }
         
         attackOne(){
-            console.log('attack One');
+            //console.log('attack One');
         }
         attackTwo(){
-            console.log('attack Two');
+            //console.log('attack Two');
         }
     }
 
@@ -50,10 +50,10 @@ function initializeVariables(){
         }
         
         attackOne(){
-            console.log('attack One');
+            //console.log('attack One');
         }
         attackTwo(){
-            console.log('attack Two');
+            //console.log('attack Two');
         }
     }
 
@@ -68,10 +68,100 @@ function initializeVariables(){
         }
         
         attackOne(){
-            console.log('attack One');
+            //console.log('attack One');
         }
         attackTwo(){
-            console.log('attack Two');
+            //console.log('attack Two');
+        }
+    }
+
+    class Pyromancer{
+        constructor(){
+            this.jumpHeight = 12;
+            this.maxHealth = 20;
+            this.height = 75;
+            this.width = 47;
+            this.moveSpeed = 6;
+            this.sprite = 'orange';  
+        }
+        
+        attackOne(){
+            //console.log('attack One');
+        }
+        attackTwo(){
+            //console.log('attack Two');
+        }
+    }
+
+    class Lancer{
+        constructor(){
+            this.jumpHeight = 8;
+            this.maxHealth = 40;
+            this.height = 70;
+            this.width = 67;
+            this.moveSpeed = 4;
+            this.sprite = color(191, 244, 66);  
+        }
+        
+        attackOne(){
+            //console.log('attack One');
+        }
+        attackTwo(){
+            //console.log('attack Two');
+        }
+    }
+
+    class Healer{
+        constructor(){
+            this.jumpHeight = 12;
+            this.maxHealth = 30;
+            this.height = 67;
+            this.width = 52;
+            this.moveSpeed = 7.5;
+            this.sprite = 'chartreuse';  
+        }
+        
+        attackOne(){
+            //console.log('attack One');
+        }
+        attackTwo(){
+            //console.log('attack Two');
+        }
+    }
+
+    class Trapper{
+        constructor(){
+            this.jumpHeight = 12;
+            this.maxHealth = 30;
+            this.height = 63;
+            this.width = 53;
+            this.moveSpeed = 6;
+            this.sprite = 'brown';  
+        }
+        
+        attackOne(){
+            //console.log('attack One');
+        }
+        attackTwo(){
+            //console.log('attack Two');
+        }
+    }
+
+    class Bard{
+        constructor(){
+            this.jumpHeight = 12;
+            this.maxHealth = 30;
+            this.height = 55;
+            this.width = 44;
+            this.moveSpeed = 9;
+            this.sprite = 'pink';  
+        }
+        
+        attackOne(){
+            //console.log('attack One');
+        }
+        attackTwo(){
+            //console.log('attack Two');
         }
     }
 
@@ -79,8 +169,13 @@ function initializeVariables(){
     paladin = new Paladin();
     mage = new Mage();
     cleric = new Cleric();
+    pyromancer = new Pyromancer();
+    lancer = new Lancer();
+    healer = new Healer();
+    trapper = new Trapper();
+    bard = new Bard();
 
-    playerCharacters = [rogue, paladin, mage, cleric, rogue, rogue, paladin, mage, cleric];
+    playerCharacters = [rogue, paladin, mage, cleric, pyromancer, lancer, healer, trapper, bard];
 
     class Player{
         constructor(){
@@ -101,7 +196,6 @@ function initializeVariables(){
 
 let menuCellSize;
 let menuPosition;
-let menuGridAssets;
 
 function initializeWindowVariables(){
     if (width > height) {
@@ -111,8 +205,6 @@ function initializeWindowVariables(){
         menuCellSize = width / 3
     }
     menuPosition = ((width - 3*menuCellSize) / 2);
-
-    menuGridAssets = ['purple', 'red', 'cyan', 'yellow', 'green', 'brown'];
 }
 
 let inventoryGrid = [];
@@ -124,6 +216,11 @@ function initializeInventoryVariables(){
         yPosition: 5,
         cellSize: 80,
         cellNumber: 4,
+        assets: ['green', 'red', 'blue', 'gray', 'green', 'red', 'blue', 'gray', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige' ],
     };
     inventoryGrid = create2DArray(inventory.cellNumber, inventory.cellNumber);
+
+    //Give the player some starting items.
+    inventoryGrid[0][0] += 3;
+    inventoryGrid[0][1] += 1;
 }

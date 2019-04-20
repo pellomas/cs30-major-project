@@ -15,11 +15,11 @@ function setUpMainMenu(){
     menuGrid = create2DArray(3, 3);
 }
 
-function displayGrid(grid, gridAssets, cellSize, gridX, gridY) {
+function displayGrid(grid, cellSize, gridX, gridY) {
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid.length; x++) {
       
-      fill(gridAssets[grid[y][x]]);
+      fill(playerCharacters[y*3 + x].sprite);
 
       stroke(20);
       rect(x*cellSize + gridX, y*cellSize + gridY, cellSize, cellSize);
@@ -29,13 +29,16 @@ function displayGrid(grid, gridAssets, cellSize, gridX, gridY) {
 }
 
 function mainMenuClick(){
+  //Checks if the mouse is within the grid
   if (mouseX > menuPosition && mouseX < (menuPosition + 3*menuCellSize)){
+    //Adds one to player.job  for each column from right to left
     if (mouseX > menuPosition + menuCellSize && mouseX < (menuPosition + 3*menuCellSize)){
       playerOne.job += 1;
       if (mouseX > menuPosition + 2*menuCellSize && mouseX < (menuPosition + 3*menuCellSize)){
         playerOne.job += 1;  
       }
     }
+    //then adds three to player.job for each row from top to bottom.
     if (mouseY > menuCellSize && mouseY < 2*menuCellSize){
       playerOne.job += 3;
     }

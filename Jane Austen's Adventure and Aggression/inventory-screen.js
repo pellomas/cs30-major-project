@@ -3,9 +3,33 @@ function inventoryClick(){
         let xcoord = floor(mouseX / inventory.cellSize);
         let ycoord = floor(mouseY / inventory.cellSize);
 
-        if (inventoryGrid[ycoord][xcoord] < menuGridAssets.length -1){
-            inventoryGrid[ycoord][xcoord] += 1;
+        if (inventoryGrid[ycoord][xcoord] > 0){
+            inventoryGrid[ycoord][xcoord] -= 1;
         }
     }   
 }
 
+function displayInventoryGrid(grid, cellSize, gridX, gridY) {
+    for (let y = 0; y < grid.length; y++) {
+      for (let x = 0; x < grid.length; x++) {
+        
+        if (grid[y][x] === 0){
+            fill(0);
+        }
+        else{
+            fill(inventory.assets[y * 4 + x]); 
+        }
+        
+  
+        stroke(30);
+        rect(x*cellSize + gridX, y*cellSize + gridY, cellSize, cellSize);
+        
+
+        fill(255);
+        textSize(30);
+        textAlign(LEFT, TOP);
+        text(grid[y][x], x*cellSize + gridX, y*cellSize + gridY);
+        noStroke();
+      }
+    }
+  }

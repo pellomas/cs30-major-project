@@ -7,16 +7,6 @@ function jump(){
     }
 }
 
-//Change the player's speed either right or left
-function moveX(){
-    if (isMovingRight) {
-    playerOne.xSpeed = (playerCharacters[playerOne.job].moveSpeed);
-    }
-    if (isMovingLeft) {
-    playerOne.xSpeed = (-playerCharacters[playerOne.job].moveSpeed);
-    }
-}
-
 function keyPressed() {
     if (gameMode === 1){
         if (key === 'a' || key === 'A') {
@@ -38,6 +28,17 @@ function keyPressed() {
         }
     }
 }
+
+//Change the player's speed either right or left
+function moveX(){
+    if (isMovingRight) {
+    playerOne.xSpeed = (playerCharacters[playerOne.job].moveSpeed);
+    }
+    if (isMovingLeft) {
+    playerOne.xSpeed = (-playerCharacters[playerOne.job].moveSpeed);
+    }
+}
+
 function keyReleased() {
     if (key === 'a' || key === 'A') {
         isMovingLeft = false;
@@ -48,18 +49,16 @@ function keyReleased() {
 }
 
 function moveStep(){
-    if (gameMode === 1){
-       playerOne.xPosition += playerOne.xSpeed; 
-    }
+    playerOne.xPosition += playerOne.xSpeed; 
     playerOne.yPosition += playerOne.ySpeed; 
 
-    playerOne.xPosition -= 2;   
+    playerOne.xPosition -= 1;   
 }
     
     
     
     
-    //Stops the player from going offstage to the left
+    //Stops the player from going offstage (except for up)
 function touchingSide(){
     if (playerOne.xPosition <= playerCharacters[playerOne.job].width/2){
         playerOne.xSpeed = 0;

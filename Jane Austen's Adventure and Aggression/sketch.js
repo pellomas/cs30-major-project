@@ -3,7 +3,8 @@
 // April 2, 2019
 //
 // Extra for Experts:
-// 
+// Used a bit of text, used Perlin Noise to make a collision landscape, used some interesting 
+// class-value-th grid element logic
 
 let gameMode = 0; //0 is Main Menu, 1 is Game, 2 is Inventory
 let rogue;
@@ -18,14 +19,17 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   document.addEventListener("contextmenu", event => event.preventDefault());
   ellipseMode(CENTER);
+
   initializeVariables();
   initializeWindowVariables();
   initializeInventoryVariables();
+
   time = 0;
   numberOfRects = width;
   rectWidth = width / numberOfRects;
   generateInitialTerrain();
-  setRandomEncounters(1000, 5);
+
+  setRandomEncounters(1000000, 50);
 }
 
 function draw() {
@@ -33,24 +37,26 @@ function draw() {
   if (gameMode === 0){
     background(0);
     setUpMainMenu();
-    displayGrid(menuGrid, menuGridAssets, menuCellSize, menuPosition, 0);
+    displayGrid(menuGrid, menuCellSize, menuPosition, 0);
   }
   //Game
-  else if (gameMode === 1){
+  else if (gameMode === 1 || gameMode === 2){
     background(66, 206, 244);
-    moveTerrain();
+    if (gameMode === 2){
+      displayInventoryGrid(inventoryGrid, inventory.cellSize, inventory.xPosition, inventory.yPosition);
+    }
     moveTerrain();
     moveStep();
     cleanUpStep();
     touchingSide();
-    moveX();
+    if (gameMode === 1){
+      moveX();
+    }
     fill(playerCharacters[playerOne.job].sprite);
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
+    displayEnemies();
+    getEncounter();
   }
-  else if (gameMode === 2){
-    displayGrid(inventoryGrid, menuGridAssets, inventory.cellSize, inventory.xPosition, inventory.yPosition);
-  }
- 
 }
 
 
