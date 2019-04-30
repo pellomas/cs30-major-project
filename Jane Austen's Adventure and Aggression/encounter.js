@@ -23,10 +23,10 @@ class Kobold{
 
     move(){
         if (playerOne.xPosition < this.xPosition){
-            this.xPosition -= random(0.5);
+            this.xPosition -= random(3);
         }
         else{
-            this.xPosition += random(0.5);
+            this.xPosition += random(3);
         }
 
         this.xPosition -= 1;

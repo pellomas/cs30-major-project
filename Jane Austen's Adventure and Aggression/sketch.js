@@ -7,10 +7,6 @@
 // class-value-th grid element logic
 
 let gameMode = 0; //0 is Main Menu, 1 is Game, 2 is Inventory
-let rogue;
-let paladin;
-let mage;
-let cleric;
 let playerOne;
 
 
@@ -29,7 +25,7 @@ function setup() {
   rectWidth = width / numberOfRects;
   generateInitialTerrain();
 
-  setRandomEncounters(1000000, 50);
+  setRandomEncounters(1000000, 75);
 }
 
 function draw() {
