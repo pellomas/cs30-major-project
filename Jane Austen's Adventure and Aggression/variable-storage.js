@@ -3,6 +3,35 @@ let isMovingRight;
 let isMovingLeft;
 
 function initializeVariables(){
+    class PlayerAttack{
+        constructor(){
+            this.currentAttacks = [];
+        }
+
+        createAttackBox(origin, width, height, damage){
+            let newAttack;
+
+            newAttack = {
+                origin: origin,
+                width: width,
+                height: height,
+                ULCorner: origin - (width/2) - (height/2),
+                URCorner: origin + (width/2) - (height/2),
+                DLCorner: origin - (width/2) + (height/2),
+                DRCorner: origin + (width/2) + (height/2),
+                damage: damage,
+            };
+
+            this.currentAttacks.push(newAttack);
+        }
+
+        displayAttackBoxes(){
+            for (i = 0; i < this.currentAttacks.length; i++){
+                rect()
+            }
+        }
+    }
+    
     class Rogue{
         constructor(){
             this.jumpHeight = 20;

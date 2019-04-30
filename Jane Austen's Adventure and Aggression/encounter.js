@@ -10,7 +10,7 @@ class Kobold{
         this.yPosition = height /2;
     }
 
-    touchSides(){
+    touchStuff(){
         this.yPosition = height - (rects[floor(this.xPosition)].height - this.height/4) - (1)
 
         if (this.xPosition <= this.width/2){
@@ -19,6 +19,8 @@ class Kobold{
         if (this.xPosition >= width - this.width/2){
             this.xPosition = width - this.width/2;
         }
+
+        //if (this.xPosition )
     }
 
     move(){
@@ -65,7 +67,7 @@ function displayEnemies(){
     if (monsterArray.length > 0){
         for (i = 0; i < monsterArray.length; i++){
             monsterArray[i].move();
-            monsterArray[i].touchSides();
+            monsterArray[i].touchStuff();
             fill(monsterArray[i].sprite);
             ellipse(monsterArray[i].xPosition, monsterArray[i].yPosition, monsterArray[i].width, monsterArray[i].height);
         } 
