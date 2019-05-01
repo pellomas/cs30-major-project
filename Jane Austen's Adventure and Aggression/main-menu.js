@@ -46,5 +46,16 @@ function mainMenuClick(){
       playerOne.job += 6;  
     }
     gameMode = 1;
+    cursor(MOVE);
   }
+}
+
+function displayToolTip(message){
+  noCursor();
+  fill(255);
+  rect(mouseX, mouseY, 200, 150)
+  fill(0);
+  textAlign(LEFT, TOP);
+  textSize(20)
+  text(message, mouseX, mouseY, 200,150);
 }

@@ -40,6 +40,8 @@ function initializeVariables(){
             this.width = 45;
             this.moveSpeed = 10;
             this.sprite = 'purple';
+
+            this.description = 'Rogue -=- Swift and light on your feet, you use dagger and deception to dispatch your enemies.'
         }
 
         attackOne(){
@@ -58,6 +60,8 @@ function initializeVariables(){
             this.width = 52;
             this.moveSpeed = 5;
             this.sprite = 'red';  
+
+            this.description = 'Paladin -=- Slow and heavily armored, you use the blessing of your god and your heavy mace to smite your foes.'
         }
         
         attackOne(){
@@ -76,6 +80,8 @@ function initializeVariables(){
             this.width = 52;
             this.moveSpeed = 7;
             this.sprite = 'cyan';  
+
+            this.description = 'Mage -=- A brilliant and well-educated magic user, you can use arcane magic to dispatch enemies.'
         }
         
         attackOne(){
@@ -94,6 +100,8 @@ function initializeVariables(){
             this.width = 52;
             this.moveSpeed = 6;
             this.sprite = 'yellow';  
+
+            this.description = 'Cleric -=-'
         }
         
         attackOne(){
@@ -112,6 +120,8 @@ function initializeVariables(){
             this.width = 47;
             this.moveSpeed = 6;
             this.sprite = 'orange';  
+
+            this.description = 'Pyromancer -=-'
         }
         
         attackOne(){
@@ -129,7 +139,9 @@ function initializeVariables(){
             this.height = 70;
             this.width = 67;
             this.moveSpeed = 4;
-            this.sprite = color(191, 244, 66);  
+            this.sprite = color(191, 244, 66); 
+            
+            this.description = 'Lancer -=-'
         }
         
         attackOne(){
@@ -147,7 +159,9 @@ function initializeVariables(){
             this.height = 67;
             this.width = 52;
             this.moveSpeed = 7.5;
-            this.sprite = 'chartreuse';  
+            this.sprite = 'chartreuse'; 
+            
+            this.description = 'Healer -=-'
         }
         
         attackOne(){
@@ -166,6 +180,8 @@ function initializeVariables(){
             this.width = 53;
             this.moveSpeed = 6;
             this.sprite = 'brown';  
+
+            this.description = 'Trapper -=-'
         }
         
         attackOne(){
@@ -184,6 +200,8 @@ function initializeVariables(){
             this.width = 44;
             this.moveSpeed = 9;
             this.sprite = 'pink';  
+
+            this.description = 'Bard -=-'
         }
         
         attackOne(){

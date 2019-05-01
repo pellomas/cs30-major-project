@@ -34,6 +34,7 @@ function draw() {
     background(0);
     setUpMainMenu();
     displayGrid(menuGrid, menuCellSize, menuPosition, 0);
+    displayToolTip('When I look Around Me, I Cant Believe What I See, It Seems As If This Country Has Lost Its Will To Live!');
   }
   //Game
   else if (gameMode === 1 || gameMode === 2){
