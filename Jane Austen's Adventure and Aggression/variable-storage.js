@@ -3,35 +3,6 @@ let isMovingRight;
 let isMovingLeft;
 
 function initializeVariables(){
-    class PlayerAttack{
-        constructor(){
-            this.currentAttacks = [];
-        }
-
-        createAttackBox(origin, width, height, damage){
-            let newAttack;
-
-            newAttack = {
-                origin: origin,
-                width: width,
-                height: height,
-                ULCorner: origin - (width/2) - (height/2),
-                URCorner: origin + (width/2) - (height/2),
-                DLCorner: origin - (width/2) + (height/2),
-                DRCorner: origin + (width/2) + (height/2),
-                damage: damage,
-            };
-
-            this.currentAttacks.push(newAttack);
-        }
-
-        displayAttackBoxes(){
-            for (i = 0; i < this.currentAttacks.length; i++){
-                rect()
-            }
-        }
-    }
-    
     class Rogue{
         constructor(){
             this.jumpHeight = 20;
@@ -45,7 +16,7 @@ function initializeVariables(){
         }
 
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');
@@ -229,6 +200,7 @@ function initializeVariables(){
             this.job = 0;
             this.xPosition = width/2;
             this.yPosition = height/2;
+            this.direction = 1
             this.xSpeed = 0;
             this.ySpeed = 0;
             this.currentHealth = 30;

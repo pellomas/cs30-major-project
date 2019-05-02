@@ -46,7 +46,7 @@ function mainMenuClick(){
       playerOne.job += 6;  
     }
     gameMode = 1;
-    cursor(MOVE);
+    cursor(ARROW);
   }
 }
 

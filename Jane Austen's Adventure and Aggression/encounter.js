@@ -5,7 +5,7 @@ class Kobold{
         this.currentHealth = 10
         this.width = 20;
         this.height = 30;
-        this.sprite = 'burgundy';
+        this.sprite = 'green';
         this.xPosition = width /2;
         this.yPosition = height /2;
     }
@@ -20,7 +20,11 @@ class Kobold{
             this.xPosition = width - this.width/2;
         }
 
-        //if (this.xPosition )
+        for (i=0; i < currentAttacks.length; i++){
+            if (this.xPosition ){
+
+            }
+        } 
     }
 
     move(){
@@ -68,7 +72,7 @@ function displayEnemies(){
         for (i = 0; i < monsterArray.length; i++){
             monsterArray[i].move();
             monsterArray[i].touchStuff();
-            fill(monsterArray[i].sprite);
+            fill(245);
             ellipse(monsterArray[i].xPosition, monsterArray[i].yPosition, monsterArray[i].width, monsterArray[i].height);
         } 
     }
