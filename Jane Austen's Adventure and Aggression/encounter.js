@@ -5,7 +5,7 @@ class Kobold{
         this.currentHealth = 10
         this.width = 20;
         this.height = 30;
-        this.sprite = 'green';
+        this.sprite = 'red';
         this.xPosition = width /2;
         this.yPosition = height /2;
     }
@@ -36,6 +36,10 @@ class Kobold{
         }
 
         this.xPosition -= 1;
+    }
+
+    display(i){
+        ellipse(monsterArray[i].xPosition, monsterArray[i].yPosition, monsterArray[i].width, monsterArray[i].height);
     }
 }
 
@@ -70,10 +74,13 @@ function getEncounter(){
 function displayEnemies(){
     if (monsterArray.length > 0){
         for (i = 0; i < monsterArray.length; i++){
+            console.log(monsterArray[i].display);
+            console.log(monsterArray)
+            console.log(i);
+            fill(monsterArray[i].sprite);
+            monsterArray[i].display(i);
             monsterArray[i].move();
             monsterArray[i].touchStuff();
-            fill(245);
-            ellipse(monsterArray[i].xPosition, monsterArray[i].yPosition, monsterArray[i].width, monsterArray[i].height);
         } 
     }
 }
