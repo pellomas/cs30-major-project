@@ -1,13 +1,18 @@
 
 class Kobold{
     constructor(){
-        this.maxHealth = 10
-        this.currentHealth = 10
+        this.maxHealth = 10;
+        this.currentHealth = 10;
         this.width = 20;
         this.height = 30;
         this.sprite = 'red';
         this.xPosition = width /2;
         this.yPosition = height /2;
+    }
+
+    perish(){
+        this.maxHealth -= 10;
+        console.log(this.maxHealth);
     }
 
     touchStuff(){
@@ -21,8 +26,8 @@ class Kobold{
         }
 
         for (i=0; i < currentAttacks.length; i++){
-            if (this.xPosition ){
-
+            if (this.xPosition >= currentAttacks[i].ULCorner && this.xPosition <= currentAttacks[i].URCorner && this.yPosition >= currentAttacks[i].ULCorner && this.yPosition <= currentAttacks[i].DLCorner){
+                this.perish();
             }
         } 
     }
@@ -72,13 +77,12 @@ function getEncounter(){
     }
     else{
         encounterRate += 5;
-        setRandomEncounters();
+        setRandomEncounters(10000, encounterRate);
     }
 }
 
 function displayEnemies(){
     if (monsterArray.length > 0){
-        console.log(monsterArray.length);
         for (let i = 0; i < monsterArray.length; i++){
             monsterArray[i].display(i);
             monsterArray[i].move();
