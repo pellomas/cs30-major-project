@@ -9,6 +9,8 @@
 let gameMode = 0; //0 is Main Menu, 1 is Game, 2 is Inventory
 let playerOne;
 
+let encounterRate;
+
 
 function setup() {
   noStroke();
@@ -25,7 +27,8 @@ function setup() {
   rectWidth = width / numberOfRects;
   generateInitialTerrain();
 
-  setRandomEncounters(1000000, 75);
+  encounterRate = 75;
+  setRandomEncounters(100000, encounterRate);
 }
 
 function draw() {

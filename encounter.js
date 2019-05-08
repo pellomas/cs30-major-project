@@ -39,6 +39,7 @@ class Kobold{
     }
 
     display(i){
+        fill(this.sprite);
         ellipse(monsterArray[i].xPosition, monsterArray[i].yPosition, monsterArray[i].width, monsterArray[i].height);
     }
 }
@@ -69,15 +70,16 @@ function getEncounter(){
             monsterArray.push(newMonster);
         }
     }
+    else{
+        encounterRate += 5;
+        setRandomEncounters();
+    }
 }
 
 function displayEnemies(){
     if (monsterArray.length > 0){
-        for (i = 0; i < monsterArray.length; i++){
-            console.log(monsterArray[i].display);
-            console.log(monsterArray)
-            console.log(i);
-            fill(monsterArray[i].sprite);
+        console.log(monsterArray.length);
+        for (let i = 0; i < monsterArray.length; i++){
             monsterArray[i].display(i);
             monsterArray[i].move();
             monsterArray[i].touchStuff();
