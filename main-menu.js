@@ -28,6 +28,10 @@ function displayGrid(grid, cellSize, gridX, gridY) {
   }
 }
 
+function honk(){
+  console.log('honk');
+}
+
 function mainMenuClick(){
   //Checks if the mouse is within the grid
   if (mouseX > menuPosition && mouseX < (menuPosition + 3*menuCellSize)){

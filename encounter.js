@@ -1,6 +1,7 @@
 
 class Kobold{
     constructor(){
+        this.arrayPosition = 0;
         this.maxHealth = 10;
         this.currentHealth = 10;
         this.width = 20;
@@ -10,9 +11,16 @@ class Kobold{
         this.yPosition = height /2;
     }
 
+    setArrayPosition(i){
+        this.arrayPosition = i;
+    }
+
     perish(){
-        this.maxHealth -= 10;
-        console.log(this.maxHealth);
+        this.currentHealth -= 10;
+        console.log(this.currentHealth);
+        if (this. currentHealth <= 0){
+            monsterArray.pop(this.arrayPosition);
+        }
     }
 
     touchStuff(){
@@ -26,7 +34,7 @@ class Kobold{
         }
 
         for (i=0; i < currentAttacks.length; i++){
-            if (this.xPosition >= currentAttacks[i].ULCorner && this.xPosition <= currentAttacks[i].URCorner && this.yPosition >= currentAttacks[i].ULCorner && this.yPosition <= currentAttacks[i].DLCorner){
+            if (this.xPosition >= currentAttacks[i].ULCorner && this.xPosition <= currentAttacks[i].URCorner && this.yPosition >= currentAttacks[i].yOrigin && this.yPosition <= currentAttacks[i].DLCorner){
                 this.perish();
             }
         } 
@@ -57,6 +65,7 @@ function setRandomEncounters(encounterAmount, encounterRate){
     for (i = 0; i < encounterAmount; i++){
         if (floor(random(0, encounterRate)) === 0){
             kobold1 = new Kobold();
+            kobold1.setArrayPosition(i);
             encounterArray.push(kobold1);
         }
         else{

@@ -36,7 +36,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');
@@ -56,7 +56,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');
@@ -76,7 +76,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');
@@ -96,7 +96,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');
@@ -116,7 +116,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');
@@ -136,7 +136,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');
@@ -156,7 +156,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');
@@ -176,7 +176,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            //console.log('attack One');
+            createAttackBox(playerOne.xPosition, playerOne.yPosition, 100 * playerOne.direction, 20, 10)
         }
         attackTwo(){
             //console.log('attack Two');

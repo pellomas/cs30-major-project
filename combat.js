@@ -8,10 +8,9 @@ function createAttackBox(xOrigin, yOrigin, width, height, damage){
         yOrigin: yOrigin,
         width: width,
         height: height,
-        ULCorner: origin - (width/2) - (height/2),
-        URCorner: origin + (width/2) - (height/2),
-        DLCorner: origin - (width/2) + (height/2),
-        DRCorner: origin + (width/2) + (height/2),
+        URCorner: xOrigin + (width),
+        DLCorner: yOrigin + (height),
+        DRCorner: xOrigin + (width) + (height),
         damage: damage,
     };
 
