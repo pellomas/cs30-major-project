@@ -9,15 +9,23 @@ class Kobold{
         this.sprite = 'red';
         this.xPosition = width /2;
         this.yPosition = height /2;
+        this.invincible = false;
     }
 
     setArrayPosition(i){
         this.arrayPosition = i;
     }
 
+    resetInvincibility(){
+        this.invincible = false;
+        console.log('e');
+    }
+
     perish(){
         this.currentHealth -= 10;
         console.log(this.currentHealth);
+        this.invincible = true;
+        setTimeout(this.resetInvincibility, 100);
         if (this. currentHealth <= 0){
             monsterArray.pop(this.arrayPosition);
         }
@@ -34,8 +42,10 @@ class Kobold{
         }
 
         for (i=0; i < currentAttacks.length; i++){
-            if (this.xPosition >= currentAttacks[i].ULCorner && this.xPosition <= currentAttacks[i].URCorner && this.yPosition >= currentAttacks[i].yOrigin && this.yPosition <= currentAttacks[i].DLCorner){
-                this.perish();
+            if (this.xPosition >= currentAttacks[i].xOrigin && this.xPosition <= currentAttacks[i].URCorner){ //} && this.yPosition >= currentAttacks[i].yOrigin && this.yPosition <= currentAttacks[i].DLCorner){
+                if (!this.invincible){
+                  this.perish();  
+                }    
             }
         } 
     }
