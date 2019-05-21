@@ -14,18 +14,17 @@ class Kobold{
 
     setArrayPosition(i){
         this.arrayPosition = i;
+        console.log(i);
     }
 
     resetInvincibility(){
         this.invincible = false;
-        console.log('e');
     }
 
     perish(){
         this.currentHealth -= 10;
-        console.log(this.currentHealth);
         this.invincible = true;
-        setTimeout(this.resetInvincibility, 100);
+        setTimeout(this.resetInvincibility, 10);
         if (this. currentHealth <= 0){
             monsterArray.pop(this.arrayPosition);
         }
@@ -75,7 +74,6 @@ function setRandomEncounters(encounterAmount, encounterRate){
     for (i = 0; i < encounterAmount; i++){
         if (floor(random(0, encounterRate)) === 0){
             kobold1 = new Kobold();
-            kobold1.setArrayPosition(i);
             encounterArray.push(kobold1);
         }
         else{
@@ -103,6 +101,7 @@ function getEncounter(){
 function displayEnemies(){
     if (monsterArray.length > 0){
         for (let i = 0; i < monsterArray.length; i++){
+            monsterArray[i].setArrayPosition(i);
             monsterArray[i].display(i);
             monsterArray[i].move();
             monsterArray[i].touchStuff();
