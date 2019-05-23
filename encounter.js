@@ -26,7 +26,7 @@ class Kobold{
         this.invincible = true;
         setTimeout(this.resetInvincibility, 10);
         if (this. currentHealth <= 0){
-            monsterArray.pop(this.arrayPosition);
+            monsterArray.splice(this.arrayPosition, 1);
         }
     }
 
