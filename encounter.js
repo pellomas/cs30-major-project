@@ -14,7 +14,6 @@ class Kobold{
 
     setArrayPosition(i){
         this.arrayPosition = i;
-        console.log(i);
     }
 
     resetInvincibility(){

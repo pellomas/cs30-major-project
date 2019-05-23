@@ -12,9 +12,11 @@ function createAttackBox(xOrigin, yOrigin, width, height, damage){
         DLCorner: yOrigin + (height),
         DRCorner: xOrigin + (width) + (height),
         damage: damage,
+        arrayPosition: currentAttacks.length,
     };
 
     currentAttacks.push(newAttack);
+    setTimeout(currentAttacks.splice, 10, newAttack.arrayPosition, 1);
 }
 
 function displayAttackBoxes(){
