@@ -1,6 +1,6 @@
 let currentAttacks = [];
 
-function createAttackBox(xOrigin, yOrigin, width, height, damage){
+function createAttackBox(xOrigin, yOrigin, width, height, damage, castingTime){
     let newAttack;
 
     newAttack = {
@@ -10,13 +10,13 @@ function createAttackBox(xOrigin, yOrigin, width, height, damage){
         height: height,
         URCorner: xOrigin + (width),
         DLCorner: yOrigin + (height),
-        DRCorner: xOrigin + (width) + (height),
+        DRCorner: xOrigin + (width) + (height), 
         damage: damage,
         arrayPosition: currentAttacks.length,
     };
 
     currentAttacks.push(newAttack);
-    setTimeout(currentAttacks.splice, 10, newAttack.arrayPosition, 1);
+    setTimeout(function(){currentAttacks.splice(newAttack.arrayPosition, 1);}, castingTime);
 }
 
 function displayAttackBoxes(){

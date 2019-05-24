@@ -20,10 +20,10 @@ class Kobold{
         this.invincible = false;
     }
 
-    perish(){
-        this.currentHealth -= 10;
+    perish(damage){
+        this.currentHealth -= damage;
         this.invincible = true;
-        setTimeout(this.resetInvincibility, 10);
+        window.setTimeout(this.resetInvincibility, 10);
         if (this. currentHealth <= 0){
             monsterArray.splice(this.arrayPosition, 1);
         }
@@ -40,9 +40,9 @@ class Kobold{
         }
 
         for (i=0; i < currentAttacks.length; i++){
-            if (this.xPosition >= currentAttacks[i].xOrigin && this.xPosition <= currentAttacks[i].URCorner){ //} && this.yPosition >= currentAttacks[i].yOrigin && this.yPosition <= currentAttacks[i].DLCorner){
+            if (this.xPosition >= currentAttacks[i].xOrigin && this.xPosition <= currentAttacks[i].URCorner && this.yPosition >= currentAttacks[i].yOrigin && this.yPosition <= currentAttacks[i].DLCorner){
                 if (!this.invincible){
-                  this.perish();  
+                  this.perish(currentAttacks[i].damage);  
                 }    
             }
         } 
