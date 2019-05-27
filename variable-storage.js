@@ -20,10 +20,10 @@ function initializeVariables(){
 
         attackOne(){
             if(playerOne.direction === 1){
-               createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 30, 10, 20) 
+               createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 30, 10, 20); 
             }
             else if(playerOne.direction === -1){
-                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 30, 10, 20) 
+                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 30, 10, 20); 
             }
         }
         attackTwo(){
