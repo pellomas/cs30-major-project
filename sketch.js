@@ -11,6 +11,7 @@ let playerOne;
 
 let encounterRate;
 
+let square;
 
 function setup() {
   noStroke();
@@ -34,9 +35,11 @@ function setup() {
 function draw() {
   //Main Menu
   if (gameMode === 0){
+    
     background(0);
     setUpMainMenu();
     displayGrid(menuGrid, menuCellSize, menuPosition, 0);
+    square = rect(width/2, width/2, 100, 100);
   }
   //Game
   else if (gameMode === 1 || gameMode === 2){
