@@ -3,27 +3,23 @@ class Kobold{
     constructor(){
         this.arrayPosition = 0;
         this.maxHealth = 10;
-        this.currentHealth = 10;
+        this.currentHealth = this.maxHealth;
         this.width = 20;
         this.height = 30;
         this.sprite = 'red';
         this.xPosition = width /2;
         this.yPosition = height /2;
-        this.invincible = false;
+
+        this.casting = false;
+        this.attackLength = 50;
     }
 
     setArrayPosition(i){
         this.arrayPosition = i;
     }
 
-    resetInvincibility(){
-        this.invincible = false;
-    }
-
     perish(damage){
         this.currentHealth -= damage;
-        this.invincible = true;
-        window.setTimeout(this.resetInvincibility, 10);
         if (this. currentHealth <= 0){
             monsterArray.splice(this.arrayPosition, 1);
         }
@@ -40,23 +36,38 @@ class Kobold{
         }
 
         for (i=0; i < currentAttacks.length; i++){
-            if (this.xPosition >= currentAttacks[i].xOrigin && this.xPosition <= currentAttacks[i].URCorner && this.yPosition >= currentAttacks[i].yOrigin && this.yPosition <= currentAttacks[i].DLCorner){
-                if (!this.invincible){
-                  this.perish(currentAttacks[i].damage);  
-                }    
+            if (this.xPosition + this.width/2 >= currentAttacks[i].xOrigin && 
+                this.xPosition - this.width/2 <= currentAttacks[i].URCorner &&
+                this.yPosition + this.height/2 >= currentAttacks[i].yOrigin &&
+                this.yPosition - this.height/2 <= currentAttacks[i].DLCorner){
+
+                this.perish(currentAttacks[i].damage);     
             }
         } 
     }
 
     move(){
-        if (playerOne.xPosition < this.xPosition){
-            this.xPosition -= random(3);
+        if(!this.casting){
+            if (playerOne.xPosition < this.xPosition){
+                this.xPosition -= random(3);
+            }
+            else{
+                this.xPosition += random(3);
+            }
         }
-        else{
-            this.xPosition += random(3);
-        }
-
+        
         this.xPosition -= 1;
+    }
+
+    attack(){
+        if(!this.casting){
+           if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
+                this.casting = true;
+            }
+            if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
+                this.casting = true;
+            } 
+        }
     }
 
     display(i){
@@ -103,6 +114,7 @@ function displayEnemies(){
             monsterArray[i].setArrayPosition(i);
             monsterArray[i].display(i);
             monsterArray[i].move();
+            monsterArray[i].attack();
             monsterArray[i].touchStuff();
         } 
     }
