@@ -11,8 +11,6 @@ let playerOne;
 
 let encounterRate;
 
-let square;
-
 function setup() {
   noStroke();
   createCanvas(windowWidth, windowHeight);
@@ -30,6 +28,7 @@ function setup() {
 
   encounterRate = 50;
   setRandomEncounters(100000, encounterRate);
+
 }
 
 function draw() {
@@ -39,7 +38,7 @@ function draw() {
     background(0);
     setUpMainMenu();
     displayGrid(menuGrid, menuCellSize, menuPosition, 0);
-    square = rect(width/2, width/2, 100, 100);
+    fill(255);
   }
   //Game
   else if (gameMode === 1 || gameMode === 2){
