@@ -13,17 +13,20 @@ function initializeVariables(){
             this.sprite = 'purple';
 
             this.attackOneLength = 110;
+            this.attackOneHeight = 30;
+            this.attackOneYPosition = 20;
             this.attackOneCastTime = 20;
+            this.AttackOneDamage = 10;
 
             this.description = 'Rogue -=- Swift and light on your feet, you use dagger and dexterity to dispatch your enemies.'
         }
 
         attackOne(){
             if(playerOne.direction === 1){
-               createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 30, 10, 20); 
+               createAttackBox(playerOne.xPosition, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
             }
             else if(playerOne.direction === -1){
-                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 30, 10, 20); 
+                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime);  
             }
         }
         attackTwo(){
@@ -41,16 +44,17 @@ function initializeVariables(){
             this.sprite = 'red';  
 
             this.attackOneLength = 80;
+            this.attackOneCastTime = 20;
 
             this.description = 'Paladin -=- Slow and heavily armored, you use the blessing of your god and your heavy mace to smite your foes.'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 20, this.attackOneCastTime) 
              }
              else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -68,16 +72,17 @@ function initializeVariables(){
             this.sprite = 'cyan'; 
             
             this.attackOneLength = 80;
+            this.attackOneCastTime = 20;
 
             this.description = 'Mage -=- A brilliant and well-educated magic user, you can use arcane magic to dispatch enemies.'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
              else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -95,16 +100,17 @@ function initializeVariables(){
             this.sprite = 'yellow'; 
             
             this.attackOneLength = 80;
+            this.attackOneCastTime = 20;
 
             this.description = 'Cleric -=-'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
              else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -122,16 +128,17 @@ function initializeVariables(){
             this.sprite = 'orange';  
 
             this.attackOneLength = 80;
+            this.attackOneCastTime = 20;
 
             this.description = 'Pyromancer -=-'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
              else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -149,16 +156,17 @@ function initializeVariables(){
             this.sprite = color(191, 244, 66); 
 
             this.attackOneLength = 80;
+            this.attackOneCastTime = 20;
             
             this.description = 'Lancer -=-'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
              else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -176,16 +184,17 @@ function initializeVariables(){
             this.sprite = 'chartreuse'; 
 
             this.attackOneLength = 80;
+            this.attackOneCastTime = 20;
             
             this.description = 'Healer -=-'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
              else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -203,16 +212,17 @@ function initializeVariables(){
             this.sprite = 'brown';  
 
             this.attackOneLength = 80;
+            this.attackOneCastTime = 20;
 
             this.description = 'Trapper -=-'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
              else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -230,16 +240,17 @@ function initializeVariables(){
             this.sprite = 'pink';  
 
             this.attackOneLength = 110;
+            this.attackOneCastTime = 20;
 
             this.description = 'Bard -=-'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
              else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10) 
+                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){

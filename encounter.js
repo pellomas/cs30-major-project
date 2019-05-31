@@ -2,7 +2,7 @@
 class Kobold{
     constructor(){
         this.arrayPosition = 0;
-        this.maxHealth = 10;
+        this.maxHealth = 20;
         this.currentHealth = this.maxHealth;
         this.width = 20;
         this.height = 30;
@@ -11,6 +11,8 @@ class Kobold{
         this.yPosition = height /2;
 
         this.casting = false;
+        this.castTime = 2000;
+        this.prepTime = 4000;
         this.attackLength = 50;
     }
 
@@ -59,13 +61,22 @@ class Kobold{
         this.xPosition -= 1;
     }
 
+    
+    refreshCasting(){
+        this.casting = false;
+    }
+
     attack(){
         if(!this.casting){
            if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
                 this.casting = true;
+                window.setTimeout(function(){createMonsterAttack(this.xPosition, this.yPosition, this.attackLength, 30, 5, this.castTime)}, this.prepTime);
+                window.setTimeout(this.refreshCasting, this.castTime);
             }
             if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
                 this.casting = true;
+                window.setTimeout(function(){createMonsterAttack(this.xPosition, this.yPosition, this.attackLength, 30, 5, this.castTime)}, this.prepTime);
+                window.setTimeout(this.refreshCasting(), this.castTime);
             } 
         }
     }
@@ -98,7 +109,12 @@ function getEncounter(){
         currentSpace = encounterArray.shift();
         if (currentSpace !== 'no encounter'){
             let newMonster = currentSpace;
-            newMonster.xPosition = random(width);
+            if(floor(random(0, 3)) === 0){
+                newMonster.xPosition = 1;
+            }
+            else{
+                newMonster.xPosition = width - 1;
+            }
             monsterArray.push(newMonster);
         }
     }

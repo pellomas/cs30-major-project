@@ -50,13 +50,14 @@ function draw() {
     moveStep();
     cleanUpStep();
     touchingSide();
-    if (gameMode === 1){
+    if (gameMode === 1 && playerOne.isCasting === false){
       moveX();
     }
     fill(playerCharacters[playerOne.job].sprite);
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
     displayEnemies();
     displayAttackBoxes();
+    displayMonsterAttacks();
     getEncounter();
   }
 }
