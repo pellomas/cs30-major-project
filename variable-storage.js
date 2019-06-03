@@ -30,14 +30,19 @@ function initializeVariables(){
             }
         }
         attackTwo(){
-            //console.log('attack Two');
+            if(playerOne.xPosition > mouseX){
+                playerOne.xPosition = mouseX;
+            }
+            if(playerOne.yPosition > mouseY && mouseY < rects[mouseY].height){
+                playerOne.yPosition = mosueY;
+            }
         }
     }
     
     class Paladin{
         constructor(){
             this.jumpHeight = 10;
-            this.maxHealth = 30;
+            this.maxHealth = 60;
             this.height = 65;
             this.width = 52;
             this.moveSpeed = 5;
@@ -309,7 +314,7 @@ function initializeInventoryVariables(){
         xPosition: 5,
         yPosition: 5,
         cellSize: 80,
-        cellNumber: 4,
+        cellNumber: 3,
         assets: ['green', 'red', 'blue', 'gray', 'green', 'red', 'blue', 'gray', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige' ],
     };
     inventoryGrid = create2DArray(inventory.cellNumber, inventory.cellNumber);

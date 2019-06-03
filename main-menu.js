@@ -51,6 +51,7 @@ function mainMenuClick(){
     }
     gameMode = 1;
     cursor(ARROW);
+    playerOne.currentHealth = playerCharacters[playerOne.job].maxHealth;
   }
 }
 

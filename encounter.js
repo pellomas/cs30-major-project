@@ -11,8 +11,8 @@ class Kobold{
         this.yPosition = height /2;
 
         this.casting = false;
-        this.castTime = 2000;
-        this.prepTime = 4000;
+        this.castTime = 200;
+        this.prepTime = 400;
         this.attackLength = 50;
     }
 
@@ -64,6 +64,7 @@ class Kobold{
     
     refreshCasting(){
         this.casting = false;
+        console.log(this.casting);
     }
 
     attack(){
@@ -71,12 +72,12 @@ class Kobold{
            if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
                 this.casting = true;
                 window.setTimeout(function(){createMonsterAttack(this.xPosition, this.yPosition, this.attackLength, 30, 5, this.castTime)}, this.prepTime);
-                window.setTimeout(this.refreshCasting, this.castTime);
+                window.setTimeout(this.refreshCasting, this.castTime + this.prepTime);
             }
             if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
                 this.casting = true;
                 window.setTimeout(function(){createMonsterAttack(this.xPosition, this.yPosition, this.attackLength, 30, 5, this.castTime)}, this.prepTime);
-                window.setTimeout(this.refreshCasting(), this.castTime);
+                window.setTimeout(this.refreshCasting, this.castTime + this.prepTime);
             } 
         }
     }
