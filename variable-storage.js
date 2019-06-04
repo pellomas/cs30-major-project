@@ -33,8 +33,9 @@ function initializeVariables(){
             if(playerOne.xPosition > mouseX){
                 playerOne.xPosition = mouseX;
             }
-            if(playerOne.yPosition > mouseY && mouseY < rects[mouseY].height){
-                playerOne.yPosition = mosueY;
+            console.log(mouseY, playerOne.yPosition, height - rects[floor(mouseX)].height);
+            if(playerOne.yPosition > mouseY && mouseY < height - rects[floor(mouseX)].height){
+                playerOne.yPosition = mouseY;
             }
         }
     }

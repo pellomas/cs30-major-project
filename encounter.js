@@ -12,7 +12,7 @@ class Kobold{
 
         this.casting = false;
         this.castTime = 200;
-        this.prepTime = 400;
+        this.prepTime = 4000;
         this.attackLength = 50;
     }
 
@@ -86,6 +86,10 @@ class Kobold{
         fill(this.sprite);
         ellipse(monsterArray[i].xPosition, monsterArray[i].yPosition, monsterArray[i].width, monsterArray[i].height);
     }
+
+    checkCasting(){
+        console.log(this.casting);
+    }
 }
 
 
@@ -102,6 +106,8 @@ function setRandomEncounters(encounterAmount, encounterRate){
             encounterArray.push('no encounter');
         }
     }
+    kobold2 = new Kobold();
+    encounterArray = [kobold2];
 }
 
 function getEncounter(){
@@ -121,7 +127,7 @@ function getEncounter(){
     }
     else{
         encounterRate += 5;
-        setRandomEncounters(10000, encounterRate);
+        //setRandomEncounters(0, encounterRate);
     }
 }
 
