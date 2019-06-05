@@ -55,6 +55,7 @@ function draw() {
     }
     fill(playerCharacters[playerOne.job].sprite);
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
+    playerOne.checkDamage();
     displayEnemies();
     displayAttackBoxes();
     displayMonsterAttacks();

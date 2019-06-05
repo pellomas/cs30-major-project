@@ -12,7 +12,7 @@ class Kobold{
 
         this.casting = false;
         this.castTime = 200;
-        this.prepTime = 4000;
+        this.prepTime = 400;
         this.attackLength = 50;
     }
 
@@ -62,22 +62,20 @@ class Kobold{
     }
 
     
-    refreshCasting(){
-        this.casting = false;
-        console.log(this.casting);
-    }
+
 
     attack(){
         if(!this.casting){
-           if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
+            let temp = this.arrayPosition;
+            if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
                 this.casting = true;
-                window.setTimeout(function(){createMonsterAttack(this.xPosition, this.yPosition, this.attackLength, 30, 5, this.castTime)}, this.prepTime);
-                window.setTimeout(this.refreshCasting, this.castTime + this.prepTime);
+                setTimeout(function(){createMonsterAttack(this.xPosition, this.yPosition, this.attackLength, 30, 5, this.castTime)}, this.prepTime);
+                setTimeout(function(){refreshCasting(temp)}, this.castTime + this.prepTime);
             }
             if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
                 this.casting = true;
-                window.setTimeout(function(){createMonsterAttack(this.xPosition, this.yPosition, this.attackLength, 30, 5, this.castTime)}, this.prepTime);
-                window.setTimeout(this.refreshCasting, this.castTime + this.prepTime);
+                setTimeout(function(){createMonsterAttack(this.xPosition, this.yPosition, this.attackLength, 30, 5, this.castTime)}, this.prepTime);
+                setTimeout(function(){refreshCasting(temp)}, this.castTime + this.prepTime);
             } 
         }
     }
@@ -90,6 +88,10 @@ class Kobold{
     checkCasting(){
         console.log(this.casting);
     }
+}
+
+function refreshCasting(arrayPosition){
+    monsterArray[arrayPosition].casting = false;
 }
 
 
@@ -106,13 +108,11 @@ function setRandomEncounters(encounterAmount, encounterRate){
             encounterArray.push('no encounter');
         }
     }
-    kobold2 = new Kobold();
-    encounterArray = [kobold2];
 }
 
 function getEncounter(){
     if (encounterArray.length > 0){
-            let currentSpace;
+        let currentSpace;
         currentSpace = encounterArray.shift();
         if (currentSpace !== 'no encounter'){
             let newMonster = currentSpace;
@@ -127,7 +127,7 @@ function getEncounter(){
     }
     else{
         encounterRate += 5;
-        //setRandomEncounters(0, encounterRate);
+        setRandomEncounters(0, encounterRate);
     }
 }
 

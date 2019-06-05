@@ -289,9 +289,33 @@ function initializeVariables(){
             this.isStunned = false;
             this.canJump = false;
         }
+    
+
+    checkDamage(){
+       for (i=0; i < monsterAttacks.length; i++){
+            if (this.xPosition + this.width/2 >= monsterAttacks[i].xOrigin && 
+                this.xPosition - this.width/2 <= monsterAttacks[i].URCorner &&
+                this.yPosition + this.height/2 >= monsterAttacks[i].yOrigin &&
+                this.yPosition - this.height/2 <= monsterAttacks[i].DLCorner){
+
+                this.perish(monsterAttacks[i].damage);     
+            }
+        }  
     }
 
-    playerOne = new Player();
+    perish(damage){
+        honk();
+        this.currentHealth -= damage;
+
+        if(this.currentHealth <= 0){
+            console.log('oops you ded');
+        }
+    }
+}
+
+playerOne = new Player();
+
+    
 }
 
 let menuCellSize;

@@ -18,7 +18,7 @@ function createAttackBox(xOrigin, yOrigin, width, height, damage, castingTime){
     };
 
     currentAttacks.push(newAttack);
-    setTimeout(function(){currentAttacks.splice(newAttack.arrayPosition, 1);}, castingTime);
+    setTimeout(function(){currentAttacks.splice(newAttack.arrayPosition, 1)}, castingTime);
 }
 
 function displayAttackBoxes(){
@@ -51,7 +51,7 @@ function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTim
     };
 
     monsterAttacks.push(newAttack);
-    setTimeout(function(){monsterAttacks.splice(newAttack.arrayPosition, 1);}, castingTime);
+    setTimeout(function(){monsterAttacks.splice(newAttack.arrayPosition, 1)}, castingTime);
 }
 
 function displayMonsterAttacks(){
