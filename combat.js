@@ -14,11 +14,19 @@ function createAttackBox(xOrigin, yOrigin, width, height, damage, castingTime){
         DLCorner: yOrigin + (height),
         DRCorner: xOrigin + (width) + (height), 
         damage: damage,
-        arrayPosition: currentAttacks.length,
+        arrayPosition: random(0, 999999999),
     };
 
     currentAttacks.push(newAttack);
-    setTimeout(function(){currentAttacks.splice(newAttack.arrayPosition, 1)}, castingTime);
+    setTimeout(function(){terminatePlayerAttack(newAttack.arrayPosition)}, castingTime);
+}
+
+function terminatePlayerAttack(tag){
+    for(i = 0; i < currentAttacks.length; i++){
+        if(currentAttacks[i].arrayPosition === tag){
+            currentAttacks.splice(i, 1);
+        }
+    }
 }
 
 function displayAttackBoxes(){
@@ -35,23 +43,34 @@ function displayAttackBoxes(){
 
 let monsterAttacks = [];
 
-function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTime){
-    let newAttack;
+function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTime, living){
+    if(living){
+        let newAttack;
 
-    newAttack = {
-        xOrigin: xOrigin,
-        yOrigin: yOrigin,
-        width: width,
-        height: height,
-        URCorner: xOrigin + (width),
-        DLCorner: yOrigin + (height),
-        DRCorner: xOrigin + (width) + (height), 
-        damage: damage,
-        arrayPosition: monsterAttacks.length,
-    };
+        newAttack = {
+            xOrigin: xOrigin,
+            yOrigin: yOrigin,
+            width: width,
+            height: height,
+            URCorner: xOrigin + (width),
+            DLCorner: yOrigin + (height),
+            DRCorner: xOrigin + (width) + (height), 
+            damage: damage,
+            arrayPosition: random(0, 999999999),
+        };
 
-    monsterAttacks.push(newAttack);
-    setTimeout(function(){monsterAttacks.splice(newAttack.arrayPosition, 1)}, castingTime);
+        monsterAttacks.push(newAttack);
+        setTimeout(function(){terminateMonsterAttack(newAttack.arrayPosition)}, castingTime);   
+    }
+    
+}
+
+function terminateMonsterAttack(tag){
+    for(i = 0; i < monsterAttacks.length; i++){
+        if(monsterAttacks[i].arrayPosition === tag){
+            monsterAttacks.splice(i, 1);
+        }
+    }
 }
 
 function displayMonsterAttacks(){

@@ -288,28 +288,40 @@ function initializeVariables(){
             this.isCasting = false;
             this.isStunned = false;
             this.canJump = false;
+            this.invincible = false;
         }
     
 
     checkDamage(){
-       for (i=0; i < monsterAttacks.length; i++){
-            if (this.xPosition + this.width/2 >= monsterAttacks[i].xOrigin && 
-                this.xPosition - this.width/2 <= monsterAttacks[i].URCorner &&
-                this.yPosition + this.height/2 >= monsterAttacks[i].yOrigin &&
-                this.yPosition - this.height/2 <= monsterAttacks[i].DLCorner){
+        if(!this.invincible){
+            for (i=0; i < monsterAttacks.length; i++){
+                if (this.xPosition + playerCharacters[this.job].width/2 >= monsterAttacks[i].xOrigin && 
+                    this.xPosition - playerCharacters[this.job].width/2 <= monsterAttacks[i].URCorner &&
+                    this.yPosition + playerCharacters[this.job].height/2 >= monsterAttacks[i].yOrigin &&
+                    this.yPosition - playerCharacters[this.job].height/2 <= monsterAttacks[i].DLCorner){
 
-                this.perish(monsterAttacks[i].damage);     
-            }
-        }  
+                    this.perish(monsterAttacks[i].damage);     
+                }
+            }   
+        }
+        
     }
 
     perish(damage){
-        honk();
         this.currentHealth -= damage;
+
+        this.invincible = true;
+        setTimeout(refreshInvincibility, 1000);
 
         if(this.currentHealth <= 0){
             console.log('oops you ded');
         }
+    }
+}
+
+function refreshInvincibility(){
+    if(playerOne.invincible === true){
+        playerOne.invincible = false;
     }
 }
 
