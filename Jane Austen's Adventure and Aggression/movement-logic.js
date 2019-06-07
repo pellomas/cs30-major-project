@@ -11,11 +11,9 @@ function keyPressed() {
     if (gameMode === 1){
         if (key === 'a' || key === 'A') {
             isMovingLeft = true;
-            playerOne.direction = -1;
         }
         if (key === 'd' || key === 'D') {
             isMovingRight = true;
-            playerOne.direction = 1;
         }
         if (key === ' '){
           jump();

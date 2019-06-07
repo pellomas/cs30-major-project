@@ -28,10 +28,6 @@ function displayGrid(grid, cellSize, gridX, gridY) {
   }
 }
 
-function honk(){
-  console.log('honk');
-}
-
 function mainMenuClick(){
   //Checks if the mouse is within the grid
   if (mouseX > menuPosition && mouseX < (menuPosition + 3*menuCellSize)){
@@ -50,17 +46,5 @@ function mainMenuClick(){
       playerOne.job += 6;  
     }
     gameMode = 1;
-    cursor(ARROW);
-    playerOne.currentHealth = playerCharacters[playerOne.job].maxHealth;
   }
-}
-
-function displayToolTip(message){
-  noCursor();
-  fill(255);
-  rect(mouseX, mouseY, 200, 150)
-  fill(0);
-  textAlign(LEFT, TOP);
-  textSize(20)
-  text(message, mouseX, mouseY, 200,150);
 }
