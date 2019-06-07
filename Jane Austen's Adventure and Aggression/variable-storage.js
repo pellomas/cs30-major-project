@@ -13,8 +13,8 @@ function initializeVariables(){
             this.sprite = 'purple';
         }
 
-        attackOne(player){
-            console.log(player);
+        attackOne(){
+            //console.log('attack One');
         }
         attackTwo(){
             //console.log('attack Two');

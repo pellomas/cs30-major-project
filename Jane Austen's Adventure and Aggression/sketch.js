@@ -68,7 +68,7 @@ function mousePressed(){
   }
   if (gameMode === 1){
     if (mouseButton === LEFT){
-      playerCharacters[playerOne.job].attackOne('hello');
+      playerCharacters[playerOne.job].attackOne();
     }
     if (mouseButton === RIGHT){
       playerCharacters[playerOne.job].attackTwo();
