@@ -7,12 +7,9 @@
 // class-value-th grid element logic
 
 let gameMode = 0; //0 is Main Menu, 1 is Game, 2 is Inventory
-let rogue;
-let paladin;
-let mage;
-let cleric;
 let playerOne;
 
+let encounterRate;
 
 function setup() {
   noStroke();
@@ -29,15 +26,19 @@ function setup() {
   rectWidth = width / numberOfRects;
   generateInitialTerrain();
 
-  setRandomEncounters(1000000, 50);
+  encounterRate = 50;
+  setRandomEncounters(100000, encounterRate);
+
 }
 
 function draw() {
   //Main Menu
   if (gameMode === 0){
+    
     background(0);
     setUpMainMenu();
     displayGrid(menuGrid, menuCellSize, menuPosition, 0);
+    fill(255);
   }
   //Game
   else if (gameMode === 1 || gameMode === 2){
@@ -49,12 +50,15 @@ function draw() {
     moveStep();
     cleanUpStep();
     touchingSide();
-    if (gameMode === 1){
+    if (gameMode === 1 && playerOne.isCasting === false){
       moveX();
     }
     fill(playerCharacters[playerOne.job].sprite);
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
+    playerOne.checkDamage();
     displayEnemies();
+    displayAttackBoxes();
+    displayMonsterAttacks();
     getEncounter();
   }
 }
