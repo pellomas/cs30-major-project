@@ -4,7 +4,6 @@ class Kobold{
         this.arrayPosition = 0;
         this.maxHealth = 20;
         this.currentHealth = this.maxHealth;
-        this.living = true;
 
         this.width = 20;
         this.height = 30;
@@ -27,7 +26,6 @@ class Kobold{
     perish(damage){
         this.currentHealth -= damage;
         if (this. currentHealth <= 0){
-            this.living = false;
             monsterArray.splice(this.arrayPosition, 1);
         }
     }
@@ -79,19 +77,18 @@ class Kobold{
             let tempCastTime = this.castTime;
             let tempDamage = this.attackDamage;
             let tempWidth = this.width;
-            let tempLiving = this.living;
 
             //attack left
             if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
                 this.casting = true;
-                setTimeout(function(){createMonsterAttack(tempXPos - tempAttackLength - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime, tempLiving)}, this.prepTime);
+                setTimeout(function(){createMonsterAttack(tempXPos - tempAttackLength - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime)}, this.prepTime);
                 setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             }
 
             //attack right
             if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
                 this.casting = true;
-                setTimeout(function(){createMonsterAttack(tempXPos - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime, tempLiving)}, this.prepTime);
+                setTimeout(function(){createMonsterAttack(tempXPos - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime)}, this.prepTime);
                 setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             } 
         }

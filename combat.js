@@ -43,8 +43,7 @@ function displayAttackBoxes(){
 
 let monsterAttacks = [];
 
-function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTime, living){
-    if(living){
+function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTime){
         let newAttack;
 
         newAttack = {
@@ -63,8 +62,6 @@ function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTim
         setTimeout(function(){terminateMonsterAttack(newAttack.arrayPosition)}, castingTime);   
     }
     
-}
-
 function terminateMonsterAttack(tag){
     for(i = 0; i < monsterAttacks.length; i++){
         if(monsterAttacks[i].arrayPosition === tag){
