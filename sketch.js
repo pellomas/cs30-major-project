@@ -55,6 +55,10 @@ function draw() {
     }
     fill(playerCharacters[playerOne.job].sprite);
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
+    if (playerOne.invincible === true){
+      fill(255);
+      ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width/3, playerCharacters[playerOne.job].height/3)
+    }
     displayPlayerHealth();
     playerOne.checkDamage();
     displayEnemies();

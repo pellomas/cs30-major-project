@@ -1,10 +1,9 @@
 function inventoryClick(){
     if (mouseX > inventory.xPosition && mouseY > inventory.yPosition && mouseY < inventory.yPosition + inventory.cellNumber*inventory.cellSize && mouseX < inventory.xPosition + inventory.cellNumber*inventory.cellSize){
-        let xcoord = floor(mouseX - (width - 245) / inventory.cellSize);
+        let xcoord = floor((mouseX - (width - 245)) / inventory.cellSize);
         let ycoord = floor(mouseY / inventory.cellSize);
 
-        console.log(xcoord, ycoord);
-        inventory.assets[ycoord * 4 + xcoord].use();
+        inventory.assets[ycoord * inventory.cellNumber + xcoord].use();
     }   
 }
 
@@ -34,17 +33,23 @@ function displayInventoryGrid(grid, cellSize, gridX, gridY) {
   }
 
 class HealthPotion{
-    constructor(){
+    constructor(gridX, gridY){
         this.colour = 'green';
+        this.gridX = gridX;
+        this.gridY = gridY;
     }
 
     use(){
-        if (playerOne.currentHealth < playerCharacters[playerOne.job].maxHealth){
-            if(playerCharacters[playerOne.job].maxHealth - playerOne.currentHealth < 20){
-                playerOne.currentHealth = playerCharacters[playerOne.job].maxHealth;
-            }
-            else{
-                playerOne.currentHealth += 20;
+        if(inventoryGrid[this.gridY][this.gridX] > 0){
+            if (playerOne.currentHealth < playerCharacters[playerOne.job].maxHealth){
+                if(playerCharacters[playerOne.job].maxHealth - playerOne.currentHealth < 20){
+                    playerOne.currentHealth = playerCharacters[playerOne.job].maxHealth;
+                    inventoryGrid[this.gridY][this.gridX] -= 1;
+                }
+                else{
+                    playerOne.currentHealth += 20;
+                    inventoryGrid[this.gridY][this.gridX] -= 1;
+                }
             }
         }
     }
@@ -53,15 +58,15 @@ class HealthPotion{
 let inventoryGrid = [];
 let inventory;
 
-let inventorySlot1 = new HealthPotion();
-let inventorySlot2 = new HealthPotion();
-let inventorySlot3 = new HealthPotion();
-let inventorySlot4 = new HealthPotion();
-let inventorySlot5 = new HealthPotion();
-let inventorySlot6 = new HealthPotion();
-let inventorySlot7 = new HealthPotion();
-let inventorySlot8 = new HealthPotion();
-let inventorySlot9 = new HealthPotion();
+let inventorySlot1 = new HealthPotion(0,0);
+let inventorySlot2 = new HealthPotion(1, 0);
+let inventorySlot3 = new HealthPotion(2, 0);
+let inventorySlot4 = new HealthPotion(1, 0);
+let inventorySlot5 = new HealthPotion(1, 1);
+let inventorySlot6 = new HealthPotion(1, 2);
+let inventorySlot7 = new HealthPotion(2, 0);
+let inventorySlot8 = new HealthPotion(2, 1);
+let inventorySlot9 = new HealthPotion(2, 2);
 
 function initializeInventoryVariables(){
     inventory = {
