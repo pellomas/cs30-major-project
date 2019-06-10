@@ -26,7 +26,7 @@ function setup() {
   rectWidth = width / numberOfRects;
   generateInitialTerrain();
 
-  encounterRate = 50;
+  encounterRate = 100;
   setRandomEncounters(100000, encounterRate);
 
 }
@@ -55,6 +55,7 @@ function draw() {
     }
     fill(playerCharacters[playerOne.job].sprite);
     ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
+    displayPlayerHealth();
     playerOne.checkDamage();
     displayEnemies();
     displayAttackBoxes();

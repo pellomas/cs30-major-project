@@ -43,7 +43,7 @@ function displayAttackBoxes(){
 
 let monsterAttacks = [];
 
-function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTime){
+function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTime, sprite){
         let newAttack;
 
         newAttack = {
@@ -55,6 +55,7 @@ function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTim
             DLCorner: yOrigin + (height),
             DRCorner: xOrigin + (width) + (height), 
             damage: damage,
+            sprite: sprite,
             arrayPosition: random(0, 999999999),
         };
 
@@ -73,7 +74,7 @@ function terminateMonsterAttack(tag){
 function displayMonsterAttacks(){
     if (monsterAttacks.length > 0){
         for (i = 0; i < monsterAttacks.length; i++){
-            fill(0);
+            fill(monsterAttacks[i].sprite);
             rect(monsterAttacks[i].xOrigin, monsterAttacks[i].yOrigin, monsterAttacks[i].width, monsterAttacks[i].height);
         } 
     }

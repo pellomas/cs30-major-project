@@ -23,7 +23,11 @@ function displayGrid(grid, cellSize, gridX, gridY) {
 
       stroke(20);
       rect(x*cellSize + gridX, y*cellSize + gridY, cellSize, cellSize);
+      fill(0);
+      textSize(20);
+      text(playerCharacters[y*3 + x].description,x*cellSize + gridX + 10, y*cellSize + gridY + 10, cellSize - 10, cellSize - 10);
       noStroke();
+
     }
   }
 }

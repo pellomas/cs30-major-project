@@ -17,7 +17,7 @@ function displayInventoryGrid(grid, cellSize, gridX, gridY) {
             fill(0);
         }
         else{
-            fill(inventory.assets[y * 4 + x]); 
+            fill(inventory.assets[y * 4 + x].colour); 
         }
         
   
@@ -33,3 +33,20 @@ function displayInventoryGrid(grid, cellSize, gridX, gridY) {
       }
     }
   }
+
+class HealthPotion{
+    constructor(){
+        this.colour = 'green';
+    }
+
+    use(){
+        if (playerOne.currentHealth < playerCharacters[playerOne.job].maxHealth){
+            if(playerCharacters[playerOne.job].maxHealth - playerOne.currentHealth < 20){
+                playerOne.currentHealth = playerCharacters[playerOne.job].maxHealth;
+            }
+            else{
+                playerOne.currentHealth += 20;
+            }
+        }
+    }
+}

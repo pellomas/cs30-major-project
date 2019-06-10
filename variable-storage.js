@@ -33,7 +33,6 @@ function initializeVariables(){
             if(playerOne.xPosition > mouseX){
                 playerOne.xPosition = mouseX;
             }
-            console.log(mouseY, playerOne.yPosition, height - rects[floor(mouseX)].height);
             if(playerOne.yPosition > mouseY && mouseY < height - rects[floor(mouseX)].height){
                 playerOne.yPosition = mouseY;
             }
@@ -108,7 +107,7 @@ function initializeVariables(){
             this.attackOneLength = 80;
             this.attackOneCastTime = 20;
 
-            this.description = 'Cleric -=-'
+            this.description = 'Cleric -=- Pious and just, you use the favour of your god to smite your enemies.'
         }
         
         attackOne(){
@@ -136,7 +135,7 @@ function initializeVariables(){
             this.attackOneLength = 80;
             this.attackOneCastTime = 20;
 
-            this.description = 'Pyromancer -=-'
+            this.description = 'Pyromancer -=- Destructive and hotheaded, you use fire magic to blow your enemies away.'
         }
         
         attackOne(){
@@ -155,25 +154,25 @@ function initializeVariables(){
     class Lancer{
         constructor(){
             this.jumpHeight = 8;
-            this.maxHealth = 40;
+            this.maxHealth = 65;
             this.height = 70;
             this.width = 67;
             this.moveSpeed = 4;
             this.sprite = color(191, 244, 66); 
 
-            this.attackOneLength = 80;
-            this.attackOneCastTime = 20;
+            this.attackOneLength = 120;
+            this.attackOneCastTime = 30;
             
-            this.description = 'Lancer -=-'
+            this.description = 'Lancer -=- Tough and strong, you absorb enemy attacks with thick armour and stab enemies with your mighty lance.'
         }
         
         attackOne(){
             if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
-             }
-             else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
-             }
+                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 30, 25, this.attackOneCastTime) 
+            }
+            else if(playerOne.direction === -1){
+                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 30, 25, this.attackOneCastTime) 
+            }
         }
         attackTwo(){
             //console.log('attack Two');
@@ -192,7 +191,7 @@ function initializeVariables(){
             this.attackOneLength = 80;
             this.attackOneCastTime = 20;
             
-            this.description = 'Healer -=-'
+            this.description = 'Healer -=- Kind and generous, you use healing magic and medicine to keep your allies in fighting shape.'
         }
         
         attackOne(){
@@ -220,7 +219,7 @@ function initializeVariables(){
             this.attackOneLength = 80;
             this.attackOneCastTime = 20;
 
-            this.description = 'Trapper -=-'
+            this.description = 'Trapper -=- Crafty and resourceful, you use traps and nets to keep enemies out of the fight.'
         }
         
         attackOne(){
@@ -248,7 +247,7 @@ function initializeVariables(){
             this.attackOneLength = 110;
             this.attackOneCastTime = 20;
 
-            this.description = 'Bard -=-'
+            this.description = 'Bard -=- Light-footed and joyful, you use the power of music to invigorate and fortify your allies.'
         }
         
         attackOne(){
@@ -274,7 +273,7 @@ function initializeVariables(){
     trapper = new Trapper();
     bard = new Bard();
 
-    playerCharacters = [rogue, paladin, mage, cleric, pyromancer, lancer, healer, trapper, bard];
+    playerCharacters = [rogue, paladin, lancer, cleric, pyromancer, mage, healer, trapper, bard];
 
     class Player{
         constructor(){
@@ -315,6 +314,8 @@ function initializeVariables(){
 
         if(this.currentHealth <= 0){
             console.log('oops you ded');
+            gameMode = 0;
+            monsterArray = [];
         }
     }
 }
@@ -348,15 +349,26 @@ let inventory;
 
 function initializeInventoryVariables(){
     inventory = {
-        xPosition: 5,
+        xPosition: width - 245,
         yPosition: 5,
         cellSize: 80,
         cellNumber: 3,
-        assets: ['green', 'red', 'blue', 'gray', 'green', 'red', 'blue', 'gray', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige', 'beige' ],
+        assets: [HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion],
     };
     inventoryGrid = create2DArray(inventory.cellNumber, inventory.cellNumber);
 
     //Give the player some starting items.
     inventoryGrid[0][0] += 3;
     inventoryGrid[0][1] += 1;
+}
+
+function displayPlayerHealth(){
+    fill(0);
+    rect(10, 10, 200, 50);
+    fill('green');
+    rect(10, 10, 200 * (playerOne.currentHealth / playerCharacters[playerOne.job].maxHealth), 50);
+
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text(playerOne.currentHealth + '/' + playerCharacters[playerOne.job].maxHealth, 100, 35, 20, 20);
 }

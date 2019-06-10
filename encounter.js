@@ -17,6 +17,7 @@ class Kobold{
         this.attackLength = 50;
         this.attackWidth = 15;
         this.attackDamage = 5;
+        this.attackSprite = 'orange';
     }
 
     setArrayPosition(i){
@@ -77,18 +78,19 @@ class Kobold{
             let tempCastTime = this.castTime;
             let tempDamage = this.attackDamage;
             let tempWidth = this.width;
+            let tempSprite = this.attackSprite;
 
             //attack left
             if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
                 this.casting = true;
-                setTimeout(function(){createMonsterAttack(tempXPos - tempAttackLength - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime)}, this.prepTime);
+                setTimeout(function(){createMonsterAttack(tempXPos - tempAttackLength - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
                 setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             }
 
             //attack right
             if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
                 this.casting = true;
-                setTimeout(function(){createMonsterAttack(tempXPos - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime)}, this.prepTime);
+                setTimeout(function(){createMonsterAttack(tempXPos - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
                 setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             } 
         }
@@ -98,16 +100,120 @@ class Kobold{
         fill(this.sprite);
         ellipse(monsterArray[i].xPosition, monsterArray[i].yPosition, monsterArray[i].width, monsterArray[i].height);
     }
+}
 
-    checkCasting(){
-        console.log(this.casting);
+
+class Whelp{
+    constructor(){
+        this.arrayPosition = 0;
+        this.maxHealth = 20;
+        this.currentHealth = this.maxHealth;
+
+        this.width = 35;
+        this.height = 30;
+        this.sprite = 'blue';
+        this.xPosition = width /2;
+        this.yPosition = height /2;
+        this.ySpeed = 10;
+
+        this.casting = false;
+        this.castTime = 200;
+        this.prepTime = 300;
+        this.attackLength = 300;
+        this.attackWidth = 40;
+        this.attackDamage = 5;
+        this.attackSprite = 'orange';
+    }
+
+    setArrayPosition(i){
+        this.arrayPosition = i;
+    }
+
+    perish(damage){
+        this.currentHealth -= damage;
+        if (this. currentHealth <= 0){
+            monsterArray.splice(this.arrayPosition, 1);
+        }
+    }
+
+    touchStuff(){
+        if (this.yPosition < height - (rects[floor(this.xPosition)].height - this.height/4 - (1))){
+              this.yPosition = height - (rects[floor(this.xPosition)].height - this.height/4) - (1)
+        }
+        if (this.xPosition <= this.width/2){
+            this.xPosition = this.width/2;
+        }
+        if (this.xPosition >= width - this.width/2){
+            this.xPosition = width - this.width/2;
+        }
+
+        for (i=0; i < currentAttacks.length; i++){
+            if (this.xPosition + this.width/2 >= currentAttacks[i].xOrigin && 
+                this.xPosition - this.width/2 <= currentAttacks[i].URCorner &&
+                this.yPosition + this.height/2 >= currentAttacks[i].yOrigin &&
+                this.yPosition - this.height/2 <= currentAttacks[i].DLCorner){
+
+                this.perish(currentAttacks[i].damage);     
+            }
+        } 
+    }
+
+    move(){
+        if(!this.casting){
+            if (playerOne.xPosition < this.xPosition){
+                this.xPosition -= random(3);
+            }
+            else{
+                this.xPosition += random(3);
+            }
+        }
+
+        this.yPosition -= this.ySpeed;
+        
+        this.xPosition -= 1;
+    }
+
+    
+
+
+    attack(){
+        if(!this.casting){
+            let tempArrayPosition = this.arrayPosition;
+            let tempXPos = playerOne.xPosition;
+            let tempYPos = playerOne.yPosition;
+            let tempAttackWidth = this.attackWidth;
+            let tempCastTime = this.castTime;
+            let tempDamage = this.attackDamage;
+            let tempSprite = this.attackSprite;
+
+            //attack left
+            if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
+                this.casting = true;
+                setTimeout(function(){createMonsterAttack(tempXPos - tempAttackWidth + random(-25, 25), tempYPos + random(-25, 25), tempAttackWidth, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
+                setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
+            }
+
+            //attack right
+            if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
+                this.casting = true;
+                setTimeout(function(){createMonsterAttack(tempXPos - tempAttackWidth + random(-25, 25), tempYPos + random(-25, 25), tempAttackWidth, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
+                setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
+            } 
+        }
+    }
+
+    display(i){
+        fill(this.sprite);
+        ellipse(monsterArray[i].xPosition, monsterArray[i].yPosition, monsterArray[i].width, monsterArray[i].height);
     }
 }
+
 
 function refreshCasting(arrayPosition){
     monsterArray[arrayPosition].casting = false;
 }
 
+let possibleMonsters = [Kobold, Whelp];
 
 let encounterArray = [];
 let monsterArray = [];
@@ -115,8 +221,14 @@ let monsterArray = [];
 function setRandomEncounters(encounterAmount, encounterRate){
     for (i = 0; i < encounterAmount; i++){
         if (floor(random(0, encounterRate)) === 0){
-            kobold1 = new Kobold();
-            encounterArray.push(kobold1);
+            if (random(0, 1) >= 0.5){
+                kobold1 = new Kobold();
+                encounterArray.push(kobold1); 
+            }
+            else{
+                whelp1 = new Whelp();
+                encounterArray.push(whelp1);
+            }
         }
         else{
             encounterArray.push('no encounter');
