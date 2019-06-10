@@ -191,7 +191,7 @@ function initializeVariables(){
             this.attackOneLength = 80;
             this.attackOneCastTime = 20;
             
-            this.description = 'Healer -=- Kind and generous, you use healing magic and medicine to keep your allies in fighting shape.'
+            this.description = 'Healer -=- Kind and generous, you use healing magic and medicine to keep your allies in fighting shape.\n \n MULTIPLAYER ONLY'
         }
         
         attackOne(){
@@ -219,7 +219,7 @@ function initializeVariables(){
             this.attackOneLength = 80;
             this.attackOneCastTime = 20;
 
-            this.description = 'Trapper -=- Crafty and resourceful, you use traps and nets to keep enemies out of the fight.'
+            this.description = 'Trapper -=- Crafty and resourceful, you use traps and nets to keep enemies out of the fight.\n \n MULTIPLAYER ONLY'
         }
         
         attackOne(){
@@ -247,7 +247,7 @@ function initializeVariables(){
             this.attackOneLength = 110;
             this.attackOneCastTime = 20;
 
-            this.description = 'Bard -=- Light-footed and joyful, you use the power of music to invigorate and fortify your allies.'
+            this.description = 'Bard -=- Light-footed and joyful, you use the power of music to invigorate and fortify your allies.\n \n MULTIPLAYER ONLY'
         }
         
         attackOne(){
@@ -342,24 +342,6 @@ function initializeWindowVariables(){
         menuCellSize = width / 3
     }
     menuPosition = ((width - 3*menuCellSize) / 2);
-}
-
-let inventoryGrid = [];
-let inventory;
-
-function initializeInventoryVariables(){
-    inventory = {
-        xPosition: width - 245,
-        yPosition: 5,
-        cellSize: 80,
-        cellNumber: 3,
-        assets: [HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion, HealthPotion],
-    };
-    inventoryGrid = create2DArray(inventory.cellNumber, inventory.cellNumber);
-
-    //Give the player some starting items.
-    inventoryGrid[0][0] += 3;
-    inventoryGrid[0][1] += 1;
 }
 
 function displayPlayerHealth(){
