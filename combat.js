@@ -32,7 +32,7 @@ function terminatePlayerAttack(tag){
 function displayAttackBoxes(){
     if (currentAttacks.length > 0){
         for (i = 0; i < currentAttacks.length; i++){
-            fill(0);
+            fill(255);
             rect(currentAttacks[i].xOrigin, currentAttacks[i].yOrigin, currentAttacks[i].width, currentAttacks[i].height);
         } 
     }

@@ -55,13 +55,33 @@ class HealthPotion{
     }
 }
 
+class Bomb{
+    constructor(gridX, gridY){
+        this.colour = 'red';
+        this.gridX = gridX;
+        this.gridY = gridY;
+    }
+
+    use(){
+        if(inventoryGrid[this.gridY][this.gridX] > 0){
+            honk();
+            for(i = 0; i < monsterArray.length; i++){
+                monsterArray[i].perish(20);
+            }
+            
+            inventoryGrid[this.gridY][this.gridX] -= 1;
+             
+        }
+    }
+}
+
 let inventoryGrid = [];
 let inventory;
 
 let inventorySlot1 = new HealthPotion(0,0);
 let inventorySlot2 = new HealthPotion(1, 0);
 let inventorySlot3 = new HealthPotion(2, 0);
-let inventorySlot4 = new HealthPotion(1, 0);
+let inventorySlot4 = new Bomb(1, 0);
 let inventorySlot5 = new HealthPotion(1, 1);
 let inventorySlot6 = new HealthPotion(1, 2);
 let inventorySlot7 = new HealthPotion(2, 0);
@@ -82,5 +102,5 @@ function initializeInventoryVariables(){
 
     //Give the player some starting items.
     inventoryGrid[0][0] += 3;
-    inventoryGrid[0][1] += 1;
+    inventoryGrid[1][0] += 1;
 }

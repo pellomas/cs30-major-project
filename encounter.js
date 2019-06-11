@@ -20,6 +20,7 @@ class Kobold{
         this.attackSprite = 'orange';
 
         this.attackID = 0;
+        this.refreshCastingID = 0;
     }
 
     setArrayPosition(i){
@@ -31,6 +32,7 @@ class Kobold{
         if (this. currentHealth <= 0){
             monsterArray.splice(this.arrayPosition, 1);
             clearTimeout(this.attackID);
+            clearTimeout(this.refreshCastingID);
         }
     }
 
@@ -87,14 +89,14 @@ class Kobold{
             if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
                 this.casting = true;
                 this.attackID = setTimeout(function(){createMonsterAttack(tempXPos - tempAttackLength - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
-                setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
+                this.refreshCastingID = setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             }
 
             //attack right
             if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
                 this.casting = true;
                 this.attackID = setTimeout(function(){createMonsterAttack(tempXPos - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
-                setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
+                this.refreshCastingID = setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             } 
         }
     }
@@ -127,6 +129,7 @@ class Whelp{
         this.attackDamage = 5;
         this.attackSprite = 'orange';
         this.attackID = 0;
+        this.refreshCastingID = 0;
     }
 
     setArrayPosition(i){
@@ -138,6 +141,7 @@ class Whelp{
         if (this. currentHealth <= 0){
             monsterArray.splice(this.arrayPosition, 1);
             clearTimeout(this.attackID);
+            clearTimeout(this.refreshCastingID);
         }
     }
 
@@ -195,14 +199,14 @@ class Whelp{
             if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
                 this.casting = true;
                 this.attackID = setTimeout(function(){createMonsterAttack(tempXPos - tempAttackWidth + random(-25, 25), tempYPos + random(-25, 25), tempAttackWidth, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
-                setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
+                this.refreshCastingID = setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             }
 
             //attack right
             if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
                 this.casting = true;
                 this.attackID = setTimeout(function(){createMonsterAttack(tempXPos - tempAttackWidth + random(-25, 25), tempYPos + random(-25, 25), tempAttackWidth, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
-                setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
+                this.refreshCastingID = setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             } 
         }
     }

@@ -42,7 +42,7 @@ function initializeVariables(){
     class Paladin{
         constructor(){
             this.jumpHeight = 10;
-            this.maxHealth = 60;
+            this.maxHealth = 50;
             this.height = 65;
             this.width = 52;
             this.moveSpeed = 5;
@@ -50,9 +50,9 @@ function initializeVariables(){
 
             this.attackOneLength = 80;
             this.attackOneCastTime = 20;
-            this.attackOneHeight = 30;
-            this.attackOneYPosition = 20;
-            this.AttackOneDamage = 10;
+            this.attackOneHeight = 60;
+            this.attackOneYPosition = 40;
+            this.AttackOneDamage = 20;
 
             this.description = 'Paladin -=- Slow and heavily armored, you use the blessing of your god and your heavy mace to smite your foes.'
         }
@@ -105,21 +105,18 @@ function initializeVariables(){
             this.sprite = 'yellow'; 
             
             this.attackOneLength = 80;
-            this.attackOneCastTime = 20;
-            this.attackOneHeight = 30;
+            this.attackOneCastTime = 1000;
+            this.attackOneHeight = 25;
             this.attackOneYPosition = 20;
-            this.AttackOneDamage = 10;
+            this.AttackOneDamage = 1;
 
             this.description = 'Cleric -=- Pious and just, you use the favour of your god to smite your enemies.'
         }
         
         attackOne(){
-            if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
-             }
-             else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
-             }
+            playerOne.isCasting = true;
+            setTimeout(refreshPlayerCasting, this.attackOneCastTime);
+            createAttackBox(mouseX - (this.attackOneLength/2), 0, this.attackOneLength, height, this.AttackOneDamage, this.attackOneCastTime);
         }
         attackTwo(){
             //console.log('attack Two');
@@ -135,25 +132,35 @@ function initializeVariables(){
             this.moveSpeed = 6;
             this.sprite = 'orange';  
 
-            this.attackOneLength = 80;
+            this.attackOneLength = 100;
             this.attackOneCastTime = 20;
             this.attackOneHeight = 30;
             this.attackOneYPosition = 20;
-            this.AttackOneDamage = 10;
+            this.AttackOneDamage = 5;
+
+            this.attackTwoDamage = 10;
+            this.attackTwoLength = 120;
+            this.attackTwoCastTime = 30;
 
             this.description = 'Pyromancer -=- Destructive and hotheaded, you use fire magic to blow your enemies away.'
         }
         
         attackOne(){
-            if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
-             }
-             else if(playerOne.direction === -1){
-                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
-             }
+            createAttackBox(mouseX - (this.attackOneLength/2) + random(-20, 20), mouseY - (this.attackOneLength/2)+ random(-20, 20),
+             this.attackOneLength + random(-20, 20), this.attackOneLength + random(-20, 20), this.AttackOneDamage + random(-5, 5),
+              this.attackOneCastTime);
         }
         attackTwo(){
-            //console.log('attack Two');
+            let tempMouseX = mouseX;
+            let tempMouseY = mouseY;
+            playerOne.isCasting = true;
+            setTimeout(refreshPlayerCasting, 2000);
+
+            for(i=0; i<5; i++){
+                setTimeout(createAttackBox(tempMouseX - (this.attackTwoLength/2) + random(-20, 20),
+                 tempMouseY - (this.attackTwoLength/2)+ random(-20, 20), this.attackTwoLength + random(-20, 20),
+                  this.attackTwoLength + random(-20, 20), this.attackTwoDamage + random(-5, 5), this.attackTwoCastTime), i * 40)
+            }
         }
     }
 
@@ -178,7 +185,7 @@ function initializeVariables(){
         attackOne(){
             if (playerOne.isCasting === false){
                 playerOne.isCasting = true;
-                setTimeout(refreshCasting, this.attackOneCastTime)
+                setTimeout(refreshPlayerCasting, this.attackOneCastTime)
                 if(playerOne.direction === 1){
                     createAttackBox(playerOne.xPosition, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
                 }
@@ -189,9 +196,7 @@ function initializeVariables(){
             
         }
         attackTwo(){
-            playerOne.invincible = true;
-            console.log(playerOne.invincible);
-            setTimeout(refreshInvincibility, 1000);
+
         }
     }
 
@@ -344,7 +349,7 @@ function refreshInvincibility(){
     }
 }
 
-function refreshCasting(){
+function refreshPlayerCasting(){
     if (playerOne.isCasting === true){
         playerOne.isCasting = false;
     }

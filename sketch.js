@@ -59,12 +59,13 @@ function draw() {
       fill(255);
       ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width/3, playerCharacters[playerOne.job].height/3)
     }
-    displayPlayerHealth();
+    
     playerOne.checkDamage();
     displayEnemies();
     displayAttackBoxes();
     displayMonsterAttacks();
     getEncounter();
+    displayPlayerHealth();
   }
 }
 
@@ -75,7 +76,7 @@ function mousePressed(){
       mainMenuClick();
     }
   }
-  if (gameMode === 1){
+  if (gameMode === 1 && playerOne.isCasting === false){
     if (mouseButton === LEFT){
       playerCharacters[playerOne.job].attackOne();
     }

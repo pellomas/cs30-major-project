@@ -1,6 +1,6 @@
 //Let the player jump
 function jump(){
-    if (playerOne.canJump){
+    if (playerOne.canJump && !playerOne.isCasting){
         
         playerOne.ySpeed -= (playerCharacters[playerOne.job].jumpHeight);
         playerOne.canJump = false;//needs to touch ground to reset this variable
