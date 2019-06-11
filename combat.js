@@ -39,6 +39,48 @@ function displayAttackBoxes(){
     
 }
 
+let currentEffects = [];
+
+function createEffectBox(xOrigin, yOrigin, width, height, healing, moveSpeedBuff, damageRes, castingTime){
+    let newEffect;
+
+    newEffect = {
+        xOrigin: xOrigin,
+        yOrigin: yOrigin,
+        width: width,
+        height: height,
+        URCorner: xOrigin + (width),
+        DLCorner: yOrigin + (height),
+        DRCorner: xOrigin + (width) + (height), 
+        healing: healing,
+        moveSpeedBuff: moveSpeedBuff,
+        damageRes: damageRes,
+        effectTime: castingTime,
+        arrayPosition: random(0, 999999999),
+    };
+
+    currentEffects.push(newEffect);
+    setTimeout(function(){terminatePlayerEffect(newEffect.arrayPosition)}, castingTime);
+}
+
+function terminatePlayerEffect(tag){
+    for(i = 0; i < currentEffects.length; i++){
+        if(currentEffects[i].arrayPosition === tag){
+            currentEffects.splice(i, 1);
+        }
+    }
+}
+
+function displayEffectBoxes(){
+    if (currentEffects.length > 0){
+        for (i = 0; i < currentEffects.length; i++){
+            fill(255);
+            rect(currentEffects[i].xOrigin, currentEffects[i].yOrigin, currentEffects[i].width, currentEffects[i].height);
+        } 
+    }
+    
+}
+
 //-----------------------------------------------------MONSTERS--------------------------------------------------------
 
 let monsterAttacks = [];

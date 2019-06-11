@@ -59,9 +59,13 @@ function draw() {
       ellipse(playerArray[0].xPosition, playerArray[0].yPosition, playerCharacters[playerArray[0].job].width/3, playerCharacters[playerArray[0].job].height/3)
     }
     
-    playerArray[0].checkDamage();
+    for(i=0; i<playerArray.length; i++){
+      playerArray[0].checkDamage();
+    }
+    
     displayEnemies();
     displayAttackBoxes();
+    displayEffectBoxes();
     displayMonsterAttacks();
     getEncounter();
     displayPlayerHealth();

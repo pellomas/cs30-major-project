@@ -37,21 +37,23 @@ function honk(){
 }
 
 class Player{
-    constructor(tag){
-      this.tag = tag
+  constructor(tag){
+    this.tag = tag
 
-      this.job = 0;
-      this.xPosition = width/2;
-      this.yPosition = height/2;
-      this.direction = 1
-      this.xSpeed = 0;
-      this.ySpeed = 0;
-      this.currentHealth = 30;
-      this.isCasting = false;
-      this.isStunned = false;
-      this.canJump = false;
-      this.invincible = false;
-    }
+    this.job = 0;
+    this.xPosition = width/2;
+    this.yPosition = height/2;
+    this.direction = 1
+    this.xSpeed = 0;
+    this.ySpeed = 0;
+    this.currentHealth = 30;
+    this.isCasting = false;
+    this.isStunned = false;
+    this.canJump = false;
+    this.invincible = false;
+
+    
+  }
 
 
   checkDamage(){
@@ -66,8 +68,21 @@ class Player{
             }
         }   
     }
-    
   }
+
+  checkEffects(){
+    for (i=0; i < currentEffects.length; i++){
+      if (this.xPosition + playerCharacters[this.job].width/2 >= currentEffects[i].xOrigin && 
+        this.xPosition - playerCharacters[this.job].width/2 <= currentEffects[i].URCorner &&
+        this.yPosition + playerCharacters[this.job].height/2 >= currentEffects[i].yOrigin &&
+        this.yPosition - playerCharacters[this.job].height/2 <= currentEffects[i].DLCorner){
+  
+        this.buff(currentEffects[i].healing, currentEffects[i].moveSpeedBuff, currentEffects[i].damageRes, currentEffects[i].effectTime);     
+      }
+    }   
+  }
+    
+    
 
   perish(damage){
     this.currentHealth -= damage;
@@ -76,10 +91,15 @@ class Player{
     setTimeout(refreshInvincibility, 1000);
 
     if(this.currentHealth <= 0){
-        console.log('oops you ded');
+        cursor(ARROW);
         gameMode = 0;
         monsterArray = [];
     }
+  }
+
+  buff(healing, moveBuff, damageBuff, effectTime){
+    playerArray[0].currentHealth += healing;
+
   }
 }
 
