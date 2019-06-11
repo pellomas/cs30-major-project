@@ -22,19 +22,19 @@ function initializeVariables(){
         }
 
         attackOne(){
-            if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
+            if(playerArray[0].direction === 1){
+                createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
             }
-            else if(playerOne.direction === -1){
-                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime);  
+            else if(playerArray[0].direction === -1){
+                createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime);  
             }
         }
         attackTwo(){
-            if(playerOne.xPosition > mouseX){
-                playerOne.xPosition = mouseX;
+            if(playerArray[0].xPosition > mouseX){
+                playerArray[0].xPosition = mouseX;
             }
-            if(playerOne.yPosition > mouseY && mouseY < height - rects[floor(mouseX)].height){
-                playerOne.yPosition = mouseY;
+            if(playerArray[0].yPosition > mouseY && mouseY < height - rects[floor(mouseX)].height){
+                playerArray[0].yPosition = mouseY;
             }
         }
     }
@@ -58,11 +58,11 @@ function initializeVariables(){
         }
         
         attackOne(){
-            if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
+            if(playerArray[0].direction === 1){
+                createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
             }
-            else if(playerOne.direction === -1){
-                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime);  
+            else if(playerArray[0].direction === -1){
+                createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime);  
             }
         }
         attackTwo(){
@@ -114,7 +114,7 @@ function initializeVariables(){
         }
         
         attackOne(){
-            playerOne.isCasting = true;
+            playerArray[0].isCasting = true;
             setTimeout(refreshPlayerCasting, this.attackOneCastTime);
             createAttackBox(mouseX - (this.attackOneLength/2), 0, this.attackOneLength, height, this.AttackOneDamage, this.attackOneCastTime);
         }
@@ -153,7 +153,7 @@ function initializeVariables(){
         attackTwo(){
             let tempMouseX = mouseX;
             let tempMouseY = mouseY;
-            playerOne.isCasting = true;
+            playerArray[0].isCasting = true;
             setTimeout(refreshPlayerCasting, 2000);
 
             for(i=0; i<5; i++){
@@ -183,14 +183,14 @@ function initializeVariables(){
         }
         
         attackOne(){
-            if (playerOne.isCasting === false){
-                playerOne.isCasting = true;
+            if (playerArray[0].isCasting === false){
+                playerArray[0].isCasting = true;
                 setTimeout(refreshPlayerCasting, this.attackOneCastTime)
-                if(playerOne.direction === 1){
-                    createAttackBox(playerOne.xPosition, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
+                if(playerArray[0].direction === 1){
+                    createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
                 }
-                else if(playerOne.direction === -1){
-                    createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime);  
+                else if(playerArray[0].direction === -1){
+                    createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime);  
                 } 
             }
             
@@ -216,11 +216,11 @@ function initializeVariables(){
         }
         
         attackOne(){
-            if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
+            if(playerArray[0].direction === 1){
+                createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
-             else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
+             else if(playerArray[0].direction === -1){
+                 createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -244,11 +244,11 @@ function initializeVariables(){
         }
         
         attackOne(){
-            if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
+            if(playerArray[0].direction === 1){
+                createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
-             else if(playerOne.direction === -1){
-                 createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
+             else if(playerArray[0].direction === -1){
+                 createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
@@ -272,17 +272,18 @@ function initializeVariables(){
         }
         
         attackOne(){
-            if(playerOne.direction === 1){
-                createAttackBox(playerOne.xPosition, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
+            if(playerArray[0].direction === 1){
+                createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
-            else if(playerOne.direction === -1){
-                createAttackBox(playerOne.xPosition - this.attackOneLength, playerOne.yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
+            else if(playerArray[0].direction === -1){
+                createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
             }
         }
         attackTwo(){
             //console.log('attack Two');
         }
     }
+
 
     rogue = new Rogue();
     paladin = new Paladin();
@@ -295,69 +296,7 @@ function initializeVariables(){
     bard = new Bard();
 
     playerCharacters = [rogue, paladin, lancer, cleric, pyromancer, mage, healer, trapper, bard];
-
-    class Player{
-        constructor(){
-            this.job = 0;
-            this.xPosition = width/2;
-            this.yPosition = height/2;
-            this.direction = 1
-            this.xSpeed = 0;
-            this.ySpeed = 0;
-            this.currentHealth = 30;
-            this.isCasting = false;
-            this.isStunned = false;
-            this.canJump = false;
-            this.invincible = false;
-        }
-    
-
-    checkDamage(){
-        if(!this.invincible){
-            for (i=0; i < monsterAttacks.length; i++){
-                if (this.xPosition + playerCharacters[this.job].width/2 >= monsterAttacks[i].xOrigin && 
-                    this.xPosition - playerCharacters[this.job].width/2 <= monsterAttacks[i].URCorner &&
-                    this.yPosition + playerCharacters[this.job].height/2 >= monsterAttacks[i].yOrigin &&
-                    this.yPosition - playerCharacters[this.job].height/2 <= monsterAttacks[i].DLCorner){
-
-                    this.perish(monsterAttacks[i].damage);     
-                }
-            }   
-        }
-        
-    }
-
-    perish(damage){
-        this.currentHealth -= damage;
-
-        this.invincible = true;
-        setTimeout(refreshInvincibility, 1000);
-
-        if(this.currentHealth <= 0){
-            console.log('oops you ded');
-            gameMode = 0;
-            monsterArray = [];
-        }
-    }
-
-
-}
-
-function refreshInvincibility(){
-    if(playerOne.invincible === true){
-        playerOne.invincible = false;
-    }
-}
-
-function refreshPlayerCasting(){
-    if (playerOne.isCasting === true){
-        playerOne.isCasting = false;
-    }
-}
-
-playerOne = new Player();
-
-    
+    playerArray = []; 
 }
 
 let menuCellSize;
@@ -377,9 +316,9 @@ function displayPlayerHealth(){
     fill(0);
     rect(10, 10, 200, 50);
     fill('green');
-    rect(10, 10, 200 * (playerOne.currentHealth / playerCharacters[playerOne.job].maxHealth), 50);
+    rect(10, 10, 200 * (playerArray[0].currentHealth / playerCharacters[playerArray[0].job].maxHealth), 50);
 
     fill(255);
     textAlign(CENTER, CENTER);
-    text(playerOne.currentHealth + '/' + playerCharacters[playerOne.job].maxHealth, 100, 35, 20, 20);
+    text(playerArray[0].currentHealth + '/' + playerCharacters[playerArray[0].job].maxHealth, 100, 35, 20, 20);
 }

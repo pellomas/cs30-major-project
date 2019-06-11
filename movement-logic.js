@@ -1,9 +1,9 @@
 //Let the player jump
 function jump(){
-    if (playerOne.canJump && !playerOne.isCasting){
+    if (playerArray[0].canJump && !playerArray[0].isCasting){
         
-        playerOne.ySpeed -= (playerCharacters[playerOne.job].jumpHeight);
-        playerOne.canJump = false;//needs to touch ground to reset this variable
+        playerArray[0].ySpeed -= (playerCharacters[playerArray[0].job].jumpHeight);
+        playerArray[0].canJump = false;//needs to touch ground to reset this variable
     }
 }
 
@@ -11,11 +11,11 @@ function keyPressed() {
     if (gameMode === 1){
         if (key === 'a' || key === 'A') {
             isMovingLeft = true;
-            playerOne.direction = -1;
+            playerArray[0].direction = -1;
         }
         if (key === 'd' || key === 'D') {
             isMovingRight = true;
-            playerOne.direction = 1;
+            playerArray[0].direction = 1;
         }
         if (key === ' '){
           jump();
@@ -34,10 +34,10 @@ function keyPressed() {
 //Change the player's speed either right or left
 function moveX(){
     if (isMovingRight) {
-    playerOne.xSpeed = (playerCharacters[playerOne.job].moveSpeed);
+    playerArray[0].xSpeed = (playerCharacters[playerArray[0].job].moveSpeed);
     }
     if (isMovingLeft) {
-    playerOne.xSpeed = (-playerCharacters[playerOne.job].moveSpeed);
+    playerArray[0].xSpeed = (-playerCharacters[playerArray[0].job].moveSpeed);
     }
 }
 
@@ -51,10 +51,10 @@ function keyReleased() {
 }
 
 function moveStep(){
-    playerOne.xPosition += playerOne.xSpeed; 
-    playerOne.yPosition += playerOne.ySpeed; 
+    playerArray[0].xPosition += playerArray[0].xSpeed; 
+    playerArray[0].yPosition += playerArray[0].ySpeed; 
 
-    playerOne.xPosition -= 1;   
+    playerArray[0].xPosition -= 1;   
 }
     
     
@@ -62,34 +62,34 @@ function moveStep(){
     
     //Stops the player from going offstage (except for up)
 function touchingSide(){
-    if (playerOne.xPosition <= playerCharacters[playerOne.job].width/2){
-        playerOne.xSpeed = 0;
-        playerOne.xPosition = playerCharacters[playerOne.job].width/2;
+    if (playerArray[0].xPosition <= playerCharacters[playerArray[0].job].width/2){
+        playerArray[0].xSpeed = 0;
+        playerArray[0].xPosition = playerCharacters[playerArray[0].job].width/2;
     }
-    if (playerOne.xPosition >= width - playerCharacters[playerOne.job].width/2){
-        playerOne.xSpeed = 0;
-        playerOne.xPosition = width - playerCharacters[playerOne.job].width/2;
+    if (playerArray[0].xPosition >= width - playerCharacters[playerArray[0].job].width/2){
+        playerArray[0].xSpeed = 0;
+        playerArray[0].xPosition = width - playerCharacters[playerArray[0].job].width/2;
     }
-    if (playerOne.yPosition >= height - (rects[floor(playerOne.xPosition)].height - playerCharacters[playerOne.job].height/4)-(7)){
-        playerOne.ySpeed = 0;
-        playerOne.yPosition = height - (rects[floor(playerOne.xPosition)].height - playerCharacters[playerOne.job].height/4) - (1);
-        playerOne.canJump = true;
+    if (playerArray[0].yPosition >= height - (rects[floor(playerArray[0].xPosition)].height - playerCharacters[playerArray[0].job].height/4)-(7)){
+        playerArray[0].ySpeed = 0;
+        playerArray[0].yPosition = height - (rects[floor(playerArray[0].xPosition)].height - playerCharacters[playerArray[0].job].height/4) - (1);
+        playerArray[0].canJump = true;
     }
 }
 
 // Dampens movement
 function cleanUpStep(){
 
-    playerOne.ySpeed += (0.7);
+    playerArray[0].ySpeed += (0.7);
 
-    if (playerOne.xSpeed < 1 && playerOne.xSpeed > -1){ // Totally stops you if you slow down to a speed value from 1 to -1
-        playerOne.xSpeed = 0;
+    if (playerArray[0].xSpeed < 1 && playerArray[0].xSpeed > -1){ // Totally stops you if you slow down to a speed value from 1 to -1
+        playerArray[0].xSpeed = 0;
     }
 
-    if (playerOne.xSpeed > 0){//Lessens movement in a slightly more gradual way than a total stop
-        playerOne.xSpeed -= (1);
+    if (playerArray[0].xSpeed > 0){//Lessens movement in a slightly more gradual way than a total stop
+        playerArray[0].xSpeed -= (1);
     }
-    if (playerOne.xSpeed < 0){
-        playerOne.xSpeed += (1);
+    if (playerArray[0].xSpeed < 0){
+        playerArray[0].xSpeed += (1);
     }
 }

@@ -41,13 +41,13 @@ class HealthPotion{
 
     use(){
         if(inventoryGrid[this.gridY][this.gridX] > 0){
-            if (playerOne.currentHealth < playerCharacters[playerOne.job].maxHealth){
-                if(playerCharacters[playerOne.job].maxHealth - playerOne.currentHealth < 20){
-                    playerOne.currentHealth = playerCharacters[playerOne.job].maxHealth;
+            if (playerArray[0].currentHealth < playerCharacters[playerArray[0].job].maxHealth){
+                if(playerCharacters[playerArray[0].job].maxHealth - playerArray[0].currentHealth < 20){
+                    playerArray[0].currentHealth = playerCharacters[playerArray[0].job].maxHealth;
                     inventoryGrid[this.gridY][this.gridX] -= 1;
                 }
                 else{
-                    playerOne.currentHealth += 20;
+                    playerArray[0].currentHealth += 20;
                     inventoryGrid[this.gridY][this.gridX] -= 1;
                 }
             }

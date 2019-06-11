@@ -7,7 +7,6 @@
 // class-value-th grid element logic
 
 let gameMode = 0; //0 is Main Menu, 1 is Game, 2 is Inventory
-let playerOne;
 
 let encounterRate;
 
@@ -50,17 +49,17 @@ function draw() {
     moveStep();
     cleanUpStep();
     touchingSide();
-    if (gameMode === 1 && playerOne.isCasting === false){
+    if (gameMode === 1 && playerArray[0].isCasting === false){
       moveX();
     }
-    fill(playerCharacters[playerOne.job].sprite);
-    ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width, playerCharacters[playerOne.job].height)
-    if (playerOne.invincible === true){
+    fill(playerCharacters[playerArray[0].job].sprite);
+    ellipse(playerArray[0].xPosition, playerArray[0].yPosition, playerCharacters[playerArray[0].job].width, playerCharacters[playerArray[0].job].height)
+    if (playerArray[0].invincible === true){
       fill(255);
-      ellipse(playerOne.xPosition, playerOne.yPosition, playerCharacters[playerOne.job].width/3, playerCharacters[playerOne.job].height/3)
+      ellipse(playerArray[0].xPosition, playerArray[0].yPosition, playerCharacters[playerArray[0].job].width/3, playerCharacters[playerArray[0].job].height/3)
     }
     
-    playerOne.checkDamage();
+    playerArray[0].checkDamage();
     displayEnemies();
     displayAttackBoxes();
     displayMonsterAttacks();
@@ -76,12 +75,12 @@ function mousePressed(){
       mainMenuClick();
     }
   }
-  if (gameMode === 1 && playerOne.isCasting === false){
+  if (gameMode === 1 && playerArray[0].isCasting === false){
     if (mouseButton === LEFT){
-      playerCharacters[playerOne.job].attackOne();
+      playerCharacters[playerArray[0].job].attackOne();
     }
     if (mouseButton === RIGHT){
-      playerCharacters[playerOne.job].attackTwo();
+      playerCharacters[playerArray[0].job].attackTwo();
     }
   }
   if (gameMode === 2){

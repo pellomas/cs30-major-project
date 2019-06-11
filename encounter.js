@@ -59,7 +59,7 @@ class Kobold{
 
     move(){
         if(!this.casting){
-            if (playerOne.xPosition < this.xPosition){
+            if (playerArray[0].xPosition < this.xPosition){
                 this.xPosition -= random(3);
             }
             else{
@@ -86,14 +86,14 @@ class Kobold{
             let tempSprite = this.attackSprite;
 
             //attack left
-            if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
+            if(this.xPosition - this.attackLength <= playerArray[0].xPosition && this.xPosition >= playerArray[0].xPosition){
                 this.casting = true;
                 this.attackID = setTimeout(function(){createMonsterAttack(tempXPos - tempAttackLength - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
                 this.refreshCastingID = setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             }
 
             //attack right
-            if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
+            if(this.xPosition + this.attackLength >= playerArray[0].xPosition && this.xPosition <= playerArray[0].xPosition){
                 this.casting = true;
                 this.attackID = setTimeout(function(){createMonsterAttack(tempXPos - tempWidth, tempYPos, tempAttackLength, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
                 this.refreshCastingID = setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
@@ -169,7 +169,7 @@ class Whelp{
 
     move(){
         if(!this.casting){
-            if (playerOne.xPosition < this.xPosition){
+            if (playerArray[0].xPosition < this.xPosition){
                 this.xPosition -= random(3);
             }
             else{
@@ -188,22 +188,22 @@ class Whelp{
     attack(){
         if(!this.casting){
             let tempArrayPosition = this.arrayPosition;
-            let tempXPos = playerOne.xPosition;
-            let tempYPos = playerOne.yPosition;
+            let tempXPos = playerArray[0].xPosition;
+            let tempYPos = playerArray[0].yPosition;
             let tempAttackWidth = this.attackWidth;
             let tempCastTime = this.castTime;
             let tempDamage = this.attackDamage;
             let tempSprite = this.attackSprite;
 
             //attack left
-            if(this.xPosition - this.attackLength <= playerOne.xPosition && this.xPosition >= playerOne.xPosition){
+            if(this.xPosition - this.attackLength <= playerArray[0].xPosition && this.xPosition >= playerArray[0].xPosition){
                 this.casting = true;
                 this.attackID = setTimeout(function(){createMonsterAttack(tempXPos - tempAttackWidth + random(-25, 25), tempYPos + random(-25, 25), tempAttackWidth, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
                 this.refreshCastingID = setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
             }
 
             //attack right
-            if(this.xPosition + this.attackLength >= playerOne.xPosition && this.xPosition <= playerOne.xPosition){
+            if(this.xPosition + this.attackLength >= playerArray[0].xPosition && this.xPosition <= playerArray[0].xPosition){
                 this.casting = true;
                 this.attackID = setTimeout(function(){createMonsterAttack(tempXPos - tempAttackWidth + random(-25, 25), tempYPos + random(-25, 25), tempAttackWidth, tempAttackWidth, tempDamage, tempCastTime, tempSprite)}, this.prepTime);
                 this.refreshCastingID = setTimeout(function(){refreshCasting(tempArrayPosition)}, this.castTime + this.prepTime);
