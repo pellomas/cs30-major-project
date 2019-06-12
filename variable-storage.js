@@ -212,21 +212,21 @@ function initializeVariables(){
             this.sprite = 'chartreuse'; 
 
             this.attackOneLength = 120;
-            this.attackOneCastTime = 100;
+            this.attackOneCastTime = 400;
             this.attackOneHeight = 30;
             this.attackOneYPosition = 20;
-            this.AttackOneDamage = 25;
+            this.AttackOneHealing = 5;
             
             this.description = 'Healer -=- Kind and generous, you use healing magic and medicine to keep your allies in fighting shape.\n \n MULTIPLAYER ONLY'
         }
         
         attackOne(){
             if(playerArray[0].direction === 1){
-                createEffectBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
-             }
-             else if(playerArray[0].direction === -1){
-                createEffectBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
-             }
+                createEffectBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, 1000, this.attackOneCastTime) 
+            }
+            else if(playerArray[0].direction === -1){
+                createEffectBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, 1000, this.attackOneCastTime) 
+            }
         }
         attackTwo(){
             //console.log('attack Two');

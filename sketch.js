@@ -61,6 +61,7 @@ function draw() {
     
     for(i=0; i<playerArray.length; i++){
       playerArray[0].checkDamage();
+      playerArray[0].checkEffects();
     }
     
     displayEnemies();

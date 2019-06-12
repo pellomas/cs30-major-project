@@ -34,10 +34,10 @@ function keyPressed() {
 //Change the player's speed either right or left
 function moveX(){
     if (isMovingRight) {
-    playerArray[0].xSpeed = (playerCharacters[playerArray[0].job].moveSpeed);
+    playerArray[0].xSpeed = (playerCharacters[playerArray[0].job].moveSpeed + playerArray[0].moveBuff);
     }
     if (isMovingLeft) {
-    playerArray[0].xSpeed = (-playerCharacters[playerArray[0].job].moveSpeed);
+    playerArray[0].xSpeed = -(playerCharacters[playerArray[0].job].moveSpeed + playerArray[0].moveBuff);
     }
 }
 

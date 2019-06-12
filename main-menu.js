@@ -52,7 +52,8 @@ class Player{
     this.canJump = false;
     this.invincible = false;
 
-    
+    this.moveBuff = 0;
+    this.damageRes = 0;
   }
 
 
@@ -85,7 +86,7 @@ class Player{
     
 
   perish(damage){
-    this.currentHealth -= damage;
+    this.currentHealth -= (damage - this.damageRes);
 
     this.invincible = true;
     setTimeout(refreshInvincibility, 1000);
@@ -97,22 +98,37 @@ class Player{
     }
   }
 
-  buff(healing, moveBuff, damageBuff, effectTime){
-    playerArray[0].currentHealth += healing;
+  buff(healing, moveBuff, damageRes, effectTime){
+    if (playerArray[0].currentHealth < playerCharacters[playerArray[0].job].maxHealth){
+      if(playerCharacters[playerArray[0].job].maxHealth - playerArray[0].currentHealth < healing){
+        playerArray[0].currentHealth = playerCharacters[playerArray[0].job].maxHealth;
+      }
+      else{
+        playerArray[0].currentHealth += healing;
+      }
+    }
+    playerArray[0].moveBuff = moveBuff;
+    playerArray.damageRes = damageRes;
 
+    setTimeout(refreshPlayerBuffs, effectTime);
   }
 }
 
 function refreshInvincibility(){
   if(playerArray[0].invincible === true){
-      playerArray[0].invincible = false;
+    playerArray[0].invincible = false;
   }
 }
 
 function refreshPlayerCasting(){
   if (playerArray[0].isCasting === true){
-      playerArray[0].isCasting = false;
+    playerArray[0].isCasting = false;
   }
+}
+
+function refreshPlayerBuffs(){
+  playerArray[0].moveBuff = 0;
+  playerArray[0].damageRes = 0;
 }
 
 function mainMenuClick(){

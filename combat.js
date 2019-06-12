@@ -41,7 +41,7 @@ function displayAttackBoxes(){
 
 let currentEffects = [];
 
-function createEffectBox(xOrigin, yOrigin, width, height, healing, moveSpeedBuff, damageRes, castingTime){
+function createEffectBox(xOrigin, yOrigin, width, height, healing, moveSpeedBuff, damageRes, effectTime, castingTime){
     let newEffect;
 
     newEffect = {
@@ -55,7 +55,7 @@ function createEffectBox(xOrigin, yOrigin, width, height, healing, moveSpeedBuff
         healing: healing,
         moveSpeedBuff: moveSpeedBuff,
         damageRes: damageRes,
-        effectTime: castingTime,
+        effectTime: effectTime,
         arrayPosition: random(0, 999999999),
     };
 
