@@ -73,6 +73,7 @@ function terminatePlayerEffect(tag){
 
 function displayEffectBoxes(){
     if (currentEffects.length > 0){
+        honk();
         for (i = 0; i < currentEffects.length; i++){
             fill(255);
             rect(currentEffects[i].xOrigin, currentEffects[i].yOrigin, currentEffects[i].width, currentEffects[i].height);

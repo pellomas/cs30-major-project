@@ -16,19 +16,17 @@ function initializeVariables(){
             this.attackOneCastTime = 20;
             this.attackOneHeight = 30;
             this.attackOneYPosition = 20;
-            this.attackOneMoveSpeedBuff = 0;
-            this.attackOneDamageRes = 0;
-            this.AttackOneHealing = 10;
+            this.AttackOneDamage = 10;
 
             this.description = 'Rogue -=- Swift and light on your feet, you use dagger and dexterity to dispatch your enemies.'
         }
 
         attackOne(){
             if(playerArray[0].direction === 1){
-                createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneHealing, this.attackOneMoveSpeedBuff, this.attackOneDamageRes, this.attackOneCastTime); 
+                createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime); 
             }
             else if(playerArray[0].direction === -1){
-                createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneHealing, this.attackOneMoveSpeedBuff, this.attackOneDamageRes, this.attackOneCastTime);  
+                createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - this.attackOneYPosition, this.attackOneLength, this.attackOneHeight, this.AttackOneDamage, this.attackOneCastTime);  
             }
         }
         attackTwo(){
@@ -215,17 +213,20 @@ function initializeVariables(){
             this.attackOneCastTime = 400;
             this.attackOneHeight = 30;
             this.attackOneYPosition = 20;
-            this.AttackOneHealing = 5;
+            this.attackOneMoveSpeedBuff = 0;
+            this.attackOneDamageRes = 0;
+            this.attackOneEffectTime = 1;
+            this.AttackOneHealing = 0.5;
             
             this.description = 'Healer -=- Kind and generous, you use healing magic and medicine to keep your allies in fighting shape.\n \n MULTIPLAYER ONLY'
         }
         
         attackOne(){
             if(playerArray[0].direction === 1){
-                createEffectBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, 1000, this.attackOneCastTime) 
+                createEffectBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, this.attackOneHeight, this.AttackOneHealing, this.attackOneMoveSpeedBuff, this.attackOneDamageRes, this.attackOneEffectTime, this.attackOneCastTime) 
             }
             else if(playerArray[0].direction === -1){
-                createEffectBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, 1000, this.attackOneCastTime) 
+                createEffectBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, this.attackOneHeight, this.AttackOneHealing, this.attackOneMoveSpeedBuff, this.attackOneDamageRes, this.attackOneEffectTime, this.attackOneCastTime) 
             }
         }
         attackTwo(){
