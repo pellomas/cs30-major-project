@@ -30,11 +30,11 @@ function initializeVariables(){
             }
         }
         attackTwo(){
-            if(playerArray[0].xPosition > mouseX){
-                playerArray[0].xPosition = mouseX;
+            if (gameMode === 1){
+                gameMode = 2;  
             }
-            if(playerArray[0].yPosition > mouseY && mouseY < height - rects[floor(mouseX)].height){
-                playerArray[0].yPosition = mouseY;
+            else if (gameMode === 2){
+                gameMode = 1;
             }
         }
     }
@@ -91,7 +91,12 @@ function initializeVariables(){
             createAttackBox(mouseX - (this.attackOneLength/2), mouseY - (this.attackOneLength/2), this.attackOneLength, this.attackOneLength, this.AttackOneDamage, this.attackOneCastTime);
         }
         attackTwo(){
-            //console.log('attack Two');
+            if (gameMode === 1){
+                gameMode = 2;  
+            }
+            else if (gameMode === 2){
+                gameMode = 1;
+            }
         }
     }
 
@@ -119,7 +124,12 @@ function initializeVariables(){
             createAttackBox(mouseX - (this.attackOneLength/2), 0, this.attackOneLength, height, this.AttackOneDamage, this.attackOneCastTime);
         }
         attackTwo(){
-            //console.log('attack Two');
+            if (gameMode === 1){
+                gameMode = 2;  
+            }
+            else if (gameMode === 2){
+                gameMode = 1;
+            }
         }
     }
 
@@ -151,15 +161,11 @@ function initializeVariables(){
               this.attackOneCastTime);
         }
         attackTwo(){
-            let tempMouseX = mouseX;
-            let tempMouseY = mouseY;
-            playerArray[0].isCasting = true;
-            setTimeout(refreshPlayerCasting, 2000);
-
-            for(i=0; i<5; i++){
-                setTimeout(createAttackBox(tempMouseX - (this.attackTwoLength/2) + random(-20, 20),
-                 tempMouseY - (this.attackTwoLength/2)+ random(-20, 20), this.attackTwoLength + random(-20, 20),
-                  this.attackTwoLength + random(-20, 20), this.attackTwoDamage + random(-5, 5), this.attackTwoCastTime), i * 40)
+            if (gameMode === 1){
+                gameMode = 2;  
+            }
+            else if (gameMode === 2){
+                gameMode = 1;
             }
         }
     }
@@ -196,7 +202,12 @@ function initializeVariables(){
             
         }
         attackTwo(){
-
+            if (gameMode === 1){
+                gameMode = 2;  
+            }
+            else if (gameMode === 2){
+                gameMode = 1;
+            }
         }
     }
 
@@ -216,21 +227,35 @@ function initializeVariables(){
             this.attackOneMoveSpeedBuff = 0;
             this.attackOneDamageRes = 0;
             this.attackOneEffectTime = 1;
-            this.AttackOneHealing = 0.5;
+            this.attackOneHealing = 0.5;
+
+            this.attackTwoYPosition = 10;
+            this.attackTwoLength = 60;
+            this.attackTwoHeight = 20;
+            this.attackTwoDamage = 5;
+            this.attackTwoCastTime = 20;
             
             this.description = 'Healer -=- Kind and generous, you use healing magic and medicine to keep your allies in fighting shape.\n \n MULTIPLAYER ONLY'
         }
         
         attackOne(){
             if(playerArray[0].direction === 1){
-                createEffectBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, this.attackOneHeight, this.AttackOneHealing, this.attackOneMoveSpeedBuff, this.attackOneDamageRes, this.attackOneEffectTime, this.attackOneCastTime) 
+                createEffectBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, this.attackOneHeight, this.attackOneHealing, this.attackOneMoveSpeedBuff, this.attackOneDamageRes, this.attackOneEffectTime, this.attackOneCastTime) 
             }
             else if(playerArray[0].direction === -1){
-                createEffectBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, this.attackOneHeight, this.AttackOneHealing, this.attackOneMoveSpeedBuff, this.attackOneDamageRes, this.attackOneEffectTime, this.attackOneCastTime) 
+                createEffectBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, this.attackOneHeight, this.attackOneHealing, this.attackOneMoveSpeedBuff, this.attackOneDamageRes, this.attackOneEffectTime, this.attackOneCastTime) 
             }
+
+            playerArray[0].isCasting = true;
+            setTimeout(refreshPlayerCasting, 1000);
         }
         attackTwo(){
-            //console.log('attack Two');
+            if (gameMode === 1){
+                gameMode = 2;  
+            }
+            else if (gameMode === 2){
+                gameMode = 1;
+            }
         }
     }
 
@@ -254,11 +279,16 @@ function initializeVariables(){
                 createAttackBox(playerArray[0].xPosition, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
              else if(playerArray[0].direction === -1){
-                 createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
+                createAttackBox(playerArray[0].xPosition - this.attackOneLength, playerArray[0].yPosition - 20, this.attackOneLength, 20, 10, this.attackOneCastTime) 
              }
         }
         attackTwo(){
-            //console.log('attack Two');
+            if (gameMode === 1){
+                gameMode = 2;  
+            }
+            else if (gameMode === 2){
+                gameMode = 1;
+            }
         }
     }
 
@@ -286,7 +316,12 @@ function initializeVariables(){
             }
         }
         attackTwo(){
-            //console.log('attack Two');
+            if (gameMode === 1){
+                gameMode = 2;  
+            }
+            else if (gameMode === 2){
+                gameMode = 1;
+            }
         }
     }
 

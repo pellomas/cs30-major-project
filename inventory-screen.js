@@ -15,7 +15,7 @@ function displayInventoryGrid(grid, cellSize, gridX, gridY) {
             fill(0);
         }
         else{
-            fill(inventory.assets[y * 4 + x].colour); 
+            fill(inventory.assets[y * 3 + x].colour); 
         }
         
   
@@ -33,7 +33,7 @@ function displayInventoryGrid(grid, cellSize, gridX, gridY) {
   }
 
 class HealthPotion{
-    constructor(gridX, gridY){
+    constructor(gridY, gridX){
         this.colour = 'green';
         this.gridX = gridX;
         this.gridY = gridY;
@@ -56,7 +56,7 @@ class HealthPotion{
 }
 
 class Bomb{
-    constructor(gridX, gridY){
+    constructor(gridY, gridX){
         this.colour = 'red';
         this.gridX = gridX;
         this.gridY = gridY;
@@ -64,7 +64,6 @@ class Bomb{
 
     use(){
         if(inventoryGrid[this.gridY][this.gridX] > 0){
-            honk();
             for(i = 0; i < monsterArray.length; i++){
                 monsterArray[i].perish(20);
             }

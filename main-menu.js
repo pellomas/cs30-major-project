@@ -38,7 +38,7 @@ function honk(){
 
 class Player{
   constructor(tag){
-    this.tag = tag
+    this.tag = tag;
 
     this.job = 0;
     this.xPosition = width/2;
@@ -54,6 +54,9 @@ class Player{
 
     this.moveBuff = 0;
     this.damageRes = 0;
+
+    this.tempMoveBuff = 0;
+    this.tempDamageRes = 0;
   }
 
 

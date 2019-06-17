@@ -26,7 +26,8 @@ function setup() {
   generateInitialTerrain();
 
   encounterRate = 100;
-  setRandomEncounters(100000, encounterRate);
+  totalEncounterLevel = 20;
+  setRandomEncounters(1000, encounterRate, totalEncounterLevel);
 
 }
 
@@ -80,14 +81,19 @@ function mousePressed(){
       mainMenuClick();
     }
   }
-  if (gameMode === 1 && playerArray[0].isCasting === false){
-    if (mouseButton === LEFT){
+  
+  if (mouseButton === LEFT){
+    if (gameMode === 1 && playerArray[0].isCasting === false){
       playerCharacters[playerArray[0].job].attackOne();
     }
+  }
+  if(gameMode === 1 || gameMode === 2){
     if (mouseButton === RIGHT){
       playerCharacters[playerArray[0].job].attackTwo();
     }
   }
+  
+  
   if (gameMode === 2){
      inventoryClick();
   }

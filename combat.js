@@ -14,7 +14,7 @@ function createAttackBox(xOrigin, yOrigin, width, height, damage, castingTime){
         DLCorner: yOrigin + (height),
         DRCorner: xOrigin + (width) + (height), 
         damage: damage,
-        arrayPosition: random(0, 999999999),
+        arrayPosition: chooseNewTag(),
     };
 
     currentAttacks.push(newAttack);
@@ -56,7 +56,7 @@ function createEffectBox(xOrigin, yOrigin, width, height, healing, moveSpeedBuff
         moveSpeedBuff: moveSpeedBuff,
         damageRes: damageRes,
         effectTime: effectTime,
-        arrayPosition: random(0, 999999999),
+        arrayPosition: chooseNewTag(),
     };
 
     currentEffects.push(newEffect);
@@ -99,7 +99,7 @@ function createMonsterAttack(xOrigin, yOrigin, width, height, damage, castingTim
             DRCorner: xOrigin + (width) + (height), 
             damage: damage,
             sprite: sprite,
-            arrayPosition: random(0, 999999999),
+            arrayPosition: chooseNewTag(),
         };
 
         monsterAttacks.push(newAttack);
